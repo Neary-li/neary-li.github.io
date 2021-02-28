@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Neary Li">
+
+
+
+
+    <meta name="keywords" content="IT">
+
+
+<title>Latex操作（北方民族大学研究生开题报告) | Neary-Li&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="../../../../favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="../../../../css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="../../../../js/script.js"></script>
+    
+    <script src="../../../../js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Neary&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="../../../../archives">Posts</a>
+                
+                    <a class="menu-item" href="../../../../category">Categories</a>
+                
+                    <a class="menu-item" href="../../../../tag">Tags</a>
+                
+                    <a class="menu-item" href="../../../../about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Neary&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="../../../../archives">Posts</a>
+                
+                    <a class="menu-item" href="../../../../category">Categories</a>
+                
+                    <a class="menu-item" href="../../../../tag">Tags</a>
+                
+                    <a class="menu-item" href="../../../../about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Latex操作（北方民族大学研究生开题报告)</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Neary Li</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">October 31, 2019&nbsp;&nbsp;19:52:12</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="../../../../categories/Latex/">Latex</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>命令<code>ctrl+t</code>或者在需要注释的部分添加<code>%</code>。例如：<br><img src="https://i.loli.net/2019/10/31/SnYG2u7IskaCOfT.png" alt="%注释"><br>去除注释<code>Ctrl+u</code>。  </p>
+<h2 id="添加符号"><a href="#添加符号" class="headerlink" title="添加符号"></a>添加符号</h2><p>使用<code>\</code>命令，如<code>\%</code>则表示输出<code>%</code>，<code>\&amp;</code>表示<code>&amp;</code>。  </p>
+<h2 id="换行符"><a href="#换行符" class="headerlink" title="换行符"></a>换行符</h2><p>命令：<code>\\</code><br>或者命令：<code>\newline</code></p>
+<h2 id="强调加粗"><a href="#强调加粗" class="headerlink" title="强调加粗"></a>强调加粗</h2><p>命令：<code>\texbf{你需要填写的内容}</code>。例如：<br><img src="https://i.loli.net/2019/10/31/YhqIcXkHsZQgljP.png" alt="加粗显示"><br>显示结果如下：<br><img src="https://i.loli.net/2019/10/31/WtevPIs6z41SMZE.png" alt="加粗显示"><br>PS：此命令只能让英文加粗。</p>
+<h2 id="长表格"><a href="#长表格" class="headerlink" title="长表格"></a>长表格</h2><pre><code class="javascript">\begin{longtable}{|p{<span class="number">0.21</span>\textwidth}&lt;   {\centering}|p{<span class="number">0.35</span>\textwidth}&lt;      {\centering}|p{<span class="number">0.06</span>\textwidth}&lt;{\centering}|p{<span class="number">0.24</span>\textwidth}&lt;{\centering}|}
+    \caption{主流语音交互平台汇总}\label{<span class="attr">tab</span>:Viocestate1}
+    \endfirsthead
+    \caption{主流语音交互平台汇总总（续）}
+    \endhead
+
+    \hline 
+    平台          &amp; 主要编程语音及支持的OS &amp; 中文支持 &amp;     主要功能   \\     %multicolum合并列、tabincell表内换行
+    \hline 
+
+    \tabincell{c}{微软Speech API}   &amp; \tabincell{c}{C\#/Java/Python/JavaScript等\\Windows/Linux/Android/iOS}  &amp;   \tabincell{c}{是} &amp;   \tabincell{l}{SR/KWS/TTS/NLP}   \\ 
+    \hline 
+
+    \tabincell{c}{Nuance}   &amp; \tabincell{c}{C/C++\\Windows/Linux} &amp;   \tabincell{c}{是} &amp; \tabincell{l}{ASR/TTS/VPR} \\ 
+    \hline 
+
+    \tabincell{c}{Google Cloud \\Speech API}   &amp;  \tabincell{c}{Java/Python/JavaScript/C\#等\\Windows/Linux/Android/iOS} &amp;   \tabincell{c}{是} &amp;\tabincell{l}{ASR/TTS/NLP/KWS}   \\ 
+    \hline     
+
+    \tabincell{c}{Amazon Lex}   &amp;  \tabincell{c}{C++<span class="regexp">/Python/</span>Java/JavaScript等\\Windows/Linux/Android/iOS} &amp;   \tabincell{c}{否} &amp;\tabincell{l}{ASR/TTS/NLP/KWS\\/VPR}   \\ 
+    \hline     
+
+
+    \tabincell{c}{科大讯飞AIUI}   &amp;  \tabincell{c}{Java/python等\\Windows/Linux/Android/iOS}   &amp;   \tabincell{c}{是} &amp; \tabincell{l}{ASR/TTS/NLP/KWS\\/VPR}  \\ 
+    \hline 
+
+    \tabincell{c}{百度DuerOS}   &amp;  \tabincell{c}{Python/C/Java/JavaScript等\\Windows/Linux/Android/iOS} &amp;   \tabincell{c}{是} &amp;\tabincell{l}{ASR/TTS/NLP/KWS}  \\ 
+    \hline         
+
+    \tabincell{c}{阿里AliGenie}   &amp;  \tabincell{c}{Java\\Windows/Linux/Android/iOS} &amp;   \tabincell{c}{是} &amp;\tabincell{l}{ASR/TTS/NLP} \\ 
+    \hline     
+
+\end{longtable}</code></pre>
+<p>显示结果：<br><img src="https://i.loli.net/2019/10/31/2O46PHQZ5vJN9ha.png" alt="长表格跨页显示">  </p>
+<h2 id="图、表的引用"><a href="#图、表的引用" class="headerlink" title="图、表的引用"></a>图、表的引用</h2><p>命令：<code>\ref{图或表中label中的值}</code></p>
+<h2 id="文章脚注"><a href="#文章脚注" class="headerlink" title="文章脚注"></a>文章脚注</h2><p>命令：<code>\footnote{你所填的内容}</code><br>示例：<code>经过TensorFlow\footnote{http://tensorfly.cn/}对端到端的声学模型进行分析</code><br><img src="https://i.loli.net/2019/10/31/S9djzQxqR4A6H2F.png" alt="数字脚标"><br>当我们不想使用数字编号时，我们可以插入符号脚注。符号脚标一般有以下几种，并依次使用。<br><img src="https://i.loli.net/2019/10/31/OolgQkbeP6HtRrs.jpg" alt="脚标种类"><br>在使用符号脚注前需要加上命令<code>\renewcommand{\thefootnote}{\fnsymbol{footnote}}</code><strong>重置</strong><code>\footnote{}</code>命令。示例如下。<br>代码：  </p>
+<pre><code class="js">\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+百度\footnote{<span class="attr">https</span>:<span class="comment">//baidu.com}、</span>
+必应\footnote{<span class="attr">https</span>:<span class="comment">//cn.bing.com}、Google\footnote{https://www.google.com}、</span>
+<span class="number">360</span>\footnote{<span class="attr">https</span>:<span class="comment">//www.so.com/}、</span>
+搜狗\footnote{<span class="attr">https</span>:<span class="comment">//www.sogou.com/}</span></code></pre>
+<p>显示结果：<br><img src="https://i.loli.net/2019/10/31/ZQj9ob4m1Xy6zAS.png" alt="符号脚标显示结果"><br><img src="https://i.loli.net/2019/10/31/uAjb2SHqiEV8zI1.png" alt="符号脚标显示结果">  </p>
+<h2 id="参考文献引用"><a href="#参考文献引用" class="headerlink" title="参考文献引用"></a>参考文献引用</h2><p> 首先将开题报告模板中的<code>ref.bib</code>文件用Texstudio打开。然后将在百度学术中搜索我们需要的参考文献，选择”应用”==&gt;”BibTex”，然后将出现的内容全部复制到<code>ref.bib</code>文件中。<br> <img src="https://i.loli.net/2019/10/31/9rUiOodTny1BcF4.png" alt="参考文献1.png"><br> <img src="https://i.loli.net/2019/10/31/xOsVkBy17QmJeD5.png" alt="参考文献2.png">  </p>
+<pre><code class="js">@article{RoCDiPTVUI,
+  title={Regulators <span class="keyword">of</span> Cell Division <span class="keyword">in</span> Plant Tissues VUI. The Cytokinins <span class="keyword">of</span> the Apple Fruit},
+  author={Letham, D. S. and Williams, M. W.},
+  journal={Physiologia Plantarum},
+  volume={<span class="number">22</span>},
+  number={<span class="number">5</span>},
+  pages={<span class="number">925</span><span class="number">-936</span>},
+  year={<span class="number">2010</span>},
+}</code></pre>
+<p><strong>第一行的内容改成title中包含的首字母。</strong><br><img src="https://i.loli.net/2019/10/31/f5jkoGvebh6WrKx.png" alt="参考文献3.png"><br>PS：找到我们需要引入参考文献的正文部分，使用命令：<code>\upcite{RoCDiPTVUI}</code>即可，其中<code>RoCDiPTVUI</code>表示为参考文献的标记，无实际意义。完成之后按下<code>F5</code>开始编译程序。  </p>
+<ul>
+<li>如果程序报错，错误如下所示：<br><img src="https://i.loli.net/2019/10/31/vgmeQuH46GLkRTB.png" alt="运行错误1.png"><br>选择”选项”==&gt;”设置Texstudio”==&gt;”构建”==&gt;”默认文献工具<code>BibTex</code>“，然后重新运行。如图：<br><img src="https://i.loli.net/2019/10/31/z9K2lFCvqUtuZg5.png" alt="编译错误2.png"></li>
+<li>另一种错误是因为我们粘贴进<code>ref.bib</code>文件中参考文献中有特殊字符，我们只需在特殊字符前添加<code>\</code>即可，然后按<code>F5</code>重新运行。  </li>
+</ul>
+<h2 id="北方民族大学开题报告模板"><a href="#北方民族大学开题报告模板" class="headerlink" title="北方民族大学开题报告模板"></a><a href="https://github.com/WizenZhang/NMUProposal" target="_blank" rel="noopener">北方民族大学开题报告模板</a></h2><h2 id="北方民族大学论文模板"><a href="#北方民族大学论文模板" class="headerlink" title="北方民族大学论文模板"></a><a href="https://github.com/WizenZhang/NMUThesis" target="_blank" rel="noopener">北方民族大学论文模板</a></h2>
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Neary Li</span>
+                    </p>
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="../../../../tags/latex/"># latex</a>
+                    
+                        <a href="../../../../tags/%E5%8C%97%E6%96%B9%E6%B0%91%E6%97%8F%E5%A4%A7%E5%AD%A6%E5%BC%80%E9%A2%98%E6%8A%A5%E5%91%8A/"># 北方民族大学开题报告</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="../../../11/01/Python%E7%AC%94%E8%AE%B01/">Python基础笔记1</a>
+            
+            
+            <a class="next" rel="next" href="../../29/Ubuntu%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%87%E7%BA%A7/">Ubuntu系统的升级、node环境安装和wireshark安装教程</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+
+
+    <div class="copyright">
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>    <span id="busuanzi_container_site_pv">
+                    总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+            <span id="busuanzi_container_site_uv">
+                    总访客数<span id="busuanzi_value_site_uv"></span>人
+            </span> 
+            <br>
+        <span>copyright &copy 2021 Neary Li. All rights reserved.</span>
+    </div>
+    
+</footer>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Neary Li">
+
+
+
+
+    <meta name="keywords" content="IT">
+
+
+<title>Hexo命令教程 | Neary-Li&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="../../../../favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="../../../../css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="../../../../js/script.js"></script>
+    
+    <script src="../../../../js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Neary&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="../../../../archives">Posts</a>
+                
+                    <a class="menu-item" href="../../../../category">Categories</a>
+                
+                    <a class="menu-item" href="../../../../tag">Tags</a>
+                
+                    <a class="menu-item" href="../../../../about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Neary&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="../../../../archives">Posts</a>
+                
+                    <a class="menu-item" href="../../../../category">Categories</a>
+                
+                    <a class="menu-item" href="../../../../tag">Tags</a>
+                
+                    <a class="menu-item" href="../../../../about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Hexo命令教程</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Neary Li</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">December 10, 2020&nbsp;&nbsp;16:40:12</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="../../../../categories/Hexo/">Hexo</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ol>
+<li><code>hexo new  &quot;my new post&quot;</code><br>创建一个新的博客文档</li>
+</ol>
+<h3 id="Markdown-语法"><a href="#Markdown-语法" class="headerlink" title="Markdown 语法"></a>Markdown 语法</h3><ol start="2">
+<li><p>创建完博客文档之后填写文档主题信息具体格式如下图所示。<br><img src="/2020/12/10/Hexo%E5%91%BD%E4%BB%A4%E6%95%99%E7%A8%8B/1.png" alt><br>其中<code>categories</code>表示该博客的分类</p>
+</li>
+<li><p>Markdown支持6级标题分别为</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#                  <span class="comment">// 1级标题</span></span><br><span class="line">##                 <span class="comment">// 2级标题</span></span><br><span class="line">###                <span class="comment">// 3级标题</span></span><br><span class="line">####               <span class="comment">// 4级标题</span></span><br><span class="line">#####              <span class="comment">// 5级标题</span></span><br><span class="line">######             <span class="comment">// 6级标题</span></span><br></pre></td></tr></table></figure>
+<p>另外，markdown 的标题还支持以如下方式表示</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1级标题</span><br><span class="line">========    // 用连续的"="来表示一级标题</span><br><span class="line"></span><br><span class="line">2级标题      // 用连续的"-"来表示二级标题</span><br><span class="line">--------</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Markdown——列表</p>
+</li>
+</ol>
+<ul>
+<li>无序列表(<strong>后接空格</strong>)<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">* </span></span><br><span class="line"><span class="bullet">+ </span></span><br><span class="line">-</span><br></pre></td></tr></table></figure></li>
+<li>有序列表(<strong>后接空格</strong>)<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> </span><br><span class="line"><span class="number">2.</span> </span><br><span class="line"><span class="number">3.</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol start="5">
+<li><p>Markdown——强调</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">**加粗**                 <span class="comment">// 表示加粗</span></span><br><span class="line">*斜体*  或者 <span class="literal">_</span>斜体<span class="literal">_</span>      <span class="comment">// 表示斜体</span></span><br><span class="line">~~删除线~~              <span class="comment">// 表示删除线</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Markdown——图片<br>插入<strong>图片</strong>的语法：<code>![]()</code>, 其中<code>![图片文本-可忽略](图片地址)</code></p>
+</li>
+<li><p>Markdown——链接<br>插入<strong>链接</strong>的语法：<code>[]()</code>, 其中<code>[链接文本](链接地址)</code>，且此为行内式链接。</p>
+</li>
+<li><p>Markdown——代码<br>行内代码<code>`代码`</code><br>代码块：  </p>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```这里是代码</span><br></pre></td></tr></table></figure>
+<pre><code></code></pre></li>
+<li><p><strong>连续两个空格为换行</strong></p>
+</li>
+</ol>
+<h2 id="Hexo页面生成与部署"><a href="#Hexo页面生成与部署" class="headerlink" title="Hexo页面生成与部署"></a>Hexo页面生成与部署</h2><ol start="10">
+<li>当完成了对博客的写作，接下来需要进行发布  </li>
+</ol>
+<ul>
+<li><code>hexo g</code>  生成页面</li>
+<li><code>hexo d</code>  部署发布</li>
+<li><code>hexo g -d</code>  生成页面并部署</li>
+<li><code>hexo s</code>  本地预览</li>
+<li><code>hexo clean</code>  清除缓存和已经生成的静态文件</li>
+</ul>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Neary Li</span>
+                    </p>
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="../../../../tags/Hexo/"># Hexo</a>
+                    
+                        <a href="../../../../tags/Markdown/"># Markdown</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="../%E5%8D%8F%E5%90%8C%E8%AF%AD%E9%9F%B3%E4%BA%A4%E4%BA%92%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/">协同语音交互环境部署</a>
+            
+            
+            <a class="next" rel="next" href="../../../11/10/VScode-sync/">VScode sync</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+
+
+    <div class="copyright">
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>    <span id="busuanzi_container_site_pv">
+                    总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+            <span id="busuanzi_container_site_uv">
+                    总访客数<span id="busuanzi_value_site_uv"></span>人
+            </span> 
+            <br>
+        <span>copyright &copy 2021 Neary Li. All rights reserved.</span>
+    </div>
+    
+</footer>
+
+    </div>
+</body>
+</html>
