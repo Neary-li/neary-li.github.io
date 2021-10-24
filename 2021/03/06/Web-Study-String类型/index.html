@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Neary Li">
+
+
+
+
+    <meta name="keywords" content="IT">
+
+
+<title>Web-Study-String类型 | Neary-Li&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="../../../../favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="../../../../css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="../../../../js/script.js"></script>
+    
+    <script src="../../../../js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Neary&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="../../../../archives">Posts</a>
+                
+                    <a class="menu-item" href="../../../../category">Categories</a>
+                
+                    <a class="menu-item" href="../../../../tag">Tags</a>
+                
+                    <a class="menu-item" href="../../../../about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Neary&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="../../../../archives">Posts</a>
+                
+                    <a class="menu-item" href="../../../../category">Categories</a>
+                
+                    <a class="menu-item" href="../../../../tag">Tags</a>
+                
+                    <a class="menu-item" href="../../../../about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Web-Study-String类型</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Neary Li</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 6, 2021&nbsp;&nbsp;15:19:35</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="../../../../categories/Web/">Web</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 字符串的声明</span></span><br><span class="line"><span class="keyword">let</span> txt1 = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"hello world!"</span>);</span><br><span class="line"><span class="keyword">let</span> txt2 = <span class="string">"Hello world!"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(txt1);</span><br><span class="line"><span class="comment">// output: String &#123;"hello world!"&#125;</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 0: "h"</span></span><br><span class="line"><span class="comment"> * 1: "e"</span></span><br><span class="line"><span class="comment"> * 2: "l"</span></span><br><span class="line"><span class="comment"> * 3: "l"</span></span><br><span class="line"><span class="comment"> * 4: "o"</span></span><br><span class="line"><span class="comment"> * 5: " "</span></span><br><span class="line"><span class="comment"> * 6: "w"</span></span><br><span class="line"><span class="comment"> * 7: "o"</span></span><br><span class="line"><span class="comment"> * 8: "r"</span></span><br><span class="line"><span class="comment"> * 9: "l"</span></span><br><span class="line"><span class="comment"> * 10: "d"</span></span><br><span class="line"><span class="comment"> * 11: "!"</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 常用操作方法</span></span><br><span class="line"><span class="keyword">let</span> txt3 = <span class="string">"abcdefg"</span>;</span><br><span class="line"><span class="comment">// charAt() 返回在指定位置的字符。</span></span><br><span class="line"><span class="built_in">console</span>.log(txt3.charAt(<span class="number">0</span>)); <span class="comment">// a</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// charCodeAt() 返回在指定的位置的字符的 Unicode 编码。</span></span><br><span class="line"><span class="built_in">console</span>.log(txt3.charCodeAt(<span class="number">0</span>)); <span class="comment">// 97</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// concat() 拼接字符串 会创建一个新的字符串对象</span></span><br><span class="line"><span class="keyword">let</span> txt4 = <span class="string">"xyz"</span>;</span><br><span class="line"><span class="keyword">let</span> txt = txt4.concat(txt3);</span><br><span class="line"><span class="built_in">console</span>.log(txt); <span class="comment">// xyzabcdefg</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// indexOf() 返回某个指定的字符串值在字符串中首次出现的位置。</span></span><br><span class="line"><span class="built_in">console</span>.log(txt.indexOf(<span class="string">"ac"</span>)); <span class="comment">// -1</span></span><br><span class="line"><span class="built_in">console</span>.log(txt.indexOf(<span class="string">"abc"</span>)); <span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// include() 查找字符串中是否包含指定的子字符串。</span></span><br><span class="line"><span class="built_in">console</span>.log(txt.includes(<span class="string">"abc"</span>)); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// repeat() 方法字符串复制指定次数。</span></span><br><span class="line"><span class="keyword">let</span> txt5 = txt.repeat(<span class="number">2</span>);</span><br><span class="line"><span class="built_in">console</span>.log(txt5);</span><br><span class="line"></span><br><span class="line"><span class="comment">// string.replace(searchvalue,newvalue)</span></span><br><span class="line"><span class="comment">// replace()方法用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串。</span></span><br><span class="line"><span class="built_in">console</span>.log(txt.replace(<span class="string">"xyz"</span>, <span class="string">"good"</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// search() 查询检索字符串中指定的子字符串，或检索与正则表达式相匹配的子字符串。</span></span><br><span class="line"><span class="comment">// 如果未找到则返回-1</span></span><br><span class="line"><span class="built_in">console</span>.log(txt.search(<span class="string">"acd"</span>)); <span class="comment">// -1</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="string">"abcdabcaba"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a.search(<span class="regexp">/bc/g</span>)); <span class="comment">// 1 返回的是number,检索位置</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//slice() 裁剪String,提取字符串的片断，并在新的字符串中返回被提取的部分。</span></span><br><span class="line"><span class="built_in">console</span>.log(a.slice(<span class="number">0</span>, <span class="number">4</span>)); <span class="comment">// abcd</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// split() 将字符串转换为数组</span></span><br><span class="line"><span class="built_in">console</span>.log(a.split(<span class="string">""</span>));</span><br><span class="line"><span class="comment">// output: ["a", "b", "c", "d", "a", "b", "c", "a", "b", "a"]</span></span><br><span class="line"><span class="built_in">console</span>.log(a.split());</span><br><span class="line"><span class="comment">// output: ["abcdabcaba"]</span></span><br><span class="line"><span class="comment">// valueOf() 返回某个字符串对象的原始值。</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a.valueOf());</span><br><span class="line"><span class="comment">// output: abcdabcaba</span></span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Neary Li</span>
+                    </p>
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="../../../../tags/Web/"># Web</a>
+                    
+                        <a href="../../../../tags/JavaScript/"># JavaScript</a>
+                    
+                        <a href="../../../../tags/string/"># string</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="../../09/Web%E6%80%BB%E7%BB%93%EF%BC%882%EF%BC%89/">Web总结（2）</a>
+            
+            
+            <a class="next" rel="next" href="../../04/Web%E6%80%BB%E7%BB%93%EF%BC%881%EF%BC%89/">Web总结（1）</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+
+
+    <div class="copyright">
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>    <span id="busuanzi_container_site_pv">
+                    总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+            <span id="busuanzi_container_site_uv">
+                    总访客数<span id="busuanzi_value_site_uv"></span>人
+            </span> 
+            <br>
+        <span>copyright &copy 2021 Neary Li. All rights reserved.</span>
+    </div>
+    
+</footer>
+
+    </div>
+</body>
+</html>

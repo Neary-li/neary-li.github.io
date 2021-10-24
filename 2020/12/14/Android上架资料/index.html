@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Neary Li">
+
+
+
+
+    <meta name="keywords" content="IT">
+
+
+<title>Android上架资料 | Neary-Li&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="../../../../favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="../../../../css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="../../../../js/script.js"></script>
+    
+    <script src="../../../../js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Neary&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="../../../../archives">Posts</a>
+                
+                    <a class="menu-item" href="../../../../category">Categories</a>
+                
+                    <a class="menu-item" href="../../../../tag">Tags</a>
+                
+                    <a class="menu-item" href="../../../../about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Neary&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="../../../../archives">Posts</a>
+                
+                    <a class="menu-item" href="../../../../category">Categories</a>
+                
+                    <a class="menu-item" href="../../../../tag">Tags</a>
+                
+                    <a class="menu-item" href="../../../../about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Android上架资料</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Neary Li</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">December 14, 2020&nbsp;&nbsp;19:53:30</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="../../../../categories/Android/">Android</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="国内Android-APP-上架"><a href="#国内Android-APP-上架" class="headerlink" title="国内Android APP 上架"></a>国内Android APP 上架</h1><h2 id="1-华为开发者联盟"><a href="#1-华为开发者联盟" class="headerlink" title="1. 华为开发者联盟"></a>1. <a href="https://developer.huawei.com/consumer/cn/" target="_blank" rel="noopener">华为开发者联盟</a></h2><h3 id="完善开发者账号信息"><a href="#完善开发者账号信息" class="headerlink" title="完善开发者账号信息"></a>完善开发者账号信息</h3><p>除常用信息外，还需 <strong>企业执照（目前大多是三证合一）、法人身份证正反面照片照片</strong>。</p>
+<h3 id="上传产品信息："><a href="#上传产品信息：" class="headerlink" title="上传产品信息："></a>上传产品信息：</h3><p><strong>应用介绍</strong>（1000字符以内）、应用简介（60字符以内）、新版特性（300字符以内）  </p>
+<p><strong>应用图标</strong>—需上传完整正方形图标。尺寸：216<code>*</code>216px，图片格式：PNG。  </p>
+<p><strong>应用截图</strong>—上传最少3张截图（同一尺寸），支持JPG或JPEG格式，截图不小于：480<code>*</code>800或 800<code>*</code>480（推荐使用分辨率），单张图片最大为2MB。截图不能包含iOS元素，通知栏去除与应用无关图标。</p>
+<h2 id="2-百度移动开放平台"><a href="#2-百度移动开放平台" class="headerlink" title="2. 百度移动开放平台"></a>2. <a href="https://app.baidu.com/" target="_blank" rel="noopener">百度移动开放平台</a></h2><h3 id="完善开发者账号信息-1"><a href="#完善开发者账号信息-1" class="headerlink" title="完善开发者账号信息"></a>完善开发者账号信息</h3><p>营业执照，jpg或png格式，小于800k，必须加盖公司公章，否则账号审核会不通过</p>
+<p>法人姓名、身份证号</p>
+<p>授权文件<br>授权人手持身份证照正反面，单张小于800k，需证件头像清晰、文字数字清晰可辨、照片需原图无修改。</p>
+<h3 id="上传产品信息：-1"><a href="#上传产品信息：-1" class="headerlink" title="上传产品信息："></a>上传产品信息：</h3><p><strong>应用图标：上传JPG/PNG格式的图标，尺寸为512<code>×</code>512px，容量小于800KB</strong>  </p>
+<p>除常规信息外，还需版权信息，若有软件著作权，可直接上传著作权文件，若无，非特殊类应用可暂时用保证函代替。保证函模板下载地址——<a href="http://pan.baidu.com/s/1ntWnyhN" target="_blank" rel="noopener">http://pan.baidu.com/s/1ntWnyhN</a>。  </p>
+<p>其他特殊类应用及所需版权证明参见<a href="https://app.baidu.com/docs?id=4&frompos=401009#h2-tit3" target="_blank" rel="noopener">https://app.baidu.com/docs?id=4&amp;frompos=401009#h2-tit3</a>。</p>
+<h2 id="3-小米开放平台"><a href="#3-小米开放平台" class="headerlink" title="3. 小米开放平台"></a>3. <a href="https://dev.mi.com/console/" target="_blank" rel="noopener">小米开放平台</a></h2><h3 id="完善开发者账号信息-2"><a href="#完善开发者账号信息-2" class="headerlink" title="完善开发者账号信息"></a>完善开发者账号信息</h3><p><strong>公司营业执照扫描件，小于4M</strong></p>
+<p><strong>联系人实名认证，包括添加银行卡进行认证</strong></p>
+<h3 id="上传产品信息：-2"><a href="#上传产品信息：-2" class="headerlink" title="上传产品信息："></a>上传产品信息：</h3><p><strong>一句话简介：</strong>不超过17个汉字或34个英文字符</p>
+<p><strong>更新日志</strong>不超过2000字</p>
+<p><strong>应用截图：</strong>至少<code>3</code>张，480<code>*</code>854或720<code>*</code>1280或1080<code>*</code>1920分辨率</p>
+<h2 id="4-阿里应用分发开放平台"><a href="#4-阿里应用分发开放平台" class="headerlink" title="4. 阿里应用分发开放平台"></a>4. <a href="http://open.uc.cn/" target="_blank" rel="noopener">阿里应用分发开放平台</a></h2><p>阿里应用分发开放平台整合豌豆荚、PP助手、阿里游戏、YunOS 应用商店、UC应用商店、神马搜索6大亿级产品矩阵，实现「一点接入，全平台分发」，只要接入一个开放平台就可以共享六大亿级平台海量资源。</p>
+<h3 id="完善开发者账号信息-3"><a href="#完善开发者账号信息-3" class="headerlink" title="完善开发者账号信息"></a>完善开发者账号信息</h3><p><strong>需营业执照、法人信息、联系人信息</strong></p>
+<h3 id="上传产品信息：-3"><a href="#上传产品信息：-3" class="headerlink" title="上传产品信息："></a>上传产品信息：</h3><p><strong>应用描述：</strong>一段话描述你的产品，1000汉字以内，做好分段排版，禁止添加链接</p>
+<p><strong>新版特性：</strong>列举产品的几点特征，使用序号标识，做好换行，1000汉字以内</p>
+<p><strong>权限获取说明：</strong>应工信部要求需对敏感隐私权限的获取做出合理说明，请将APK中获取用户权限的说明一一列出</p>
+<p><strong>应用图标：</strong>上传png格式，背景透明且带圆角，建议上传分辨率512px<code>*</code>512px（最256px<code>*</code>256px）</p>
+<p><strong>应用截图：</strong>上传至少4张截图，jpg/png格式，不可上传iOS应用截图，分辨率请勿小于480<code>*</code>800或800<code>*</code>480</p>
+<p><strong>证明材料：</strong>提供软件著作权扫描件，若无，则下载<a href="http://img.ucdl.pp.uc.cn/upload_files/app_open_platform/docs/%E9%98%BF%E9%87%8C%E5%BA%94%E7%94%A8%E5%88%86%E5%8F%91%E5%BC%80%E5%8F%91%E8%80%85%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6.doc" target="_blank" rel="noopener">开发者声明</a>，填写后提交扫描件</p>
+<p>所有文件上传仅接受JPEG/PNG格式，涉及到新闻、股票、医疗、彩票、银行业务等还需要提供相应版权证明），详见<a href="http://aliapp.open.uc.cn/wiki/?p=140" target="_blank" rel="noopener">应用收录规则</a></p>
+<h2 id="5-oppo开发者平台"><a href="#5-oppo开发者平台" class="headerlink" title="5. oppo开发者平台"></a>5. <a href="https://dev.vivo.com.cn/" target="_blank" rel="noopener">oppo开发者平台</a></h2><h3 id="完善开发者账号信息-4"><a href="#完善开发者账号信息-4" class="headerlink" title="完善开发者账号信息"></a>完善开发者账号信息</h3><p><strong>营业执照：</strong>营业执照或三证合一证件 (图片小于1M，支持格式jpg\png)</p>
+<p><strong>法人身份证：</strong>法定代表人身份证件正反面彩色照(身份证号码显示清晰，图片小于3M，支持格式jpg\png)</p>
+<h3 id="上传产品信息：-4"><a href="#上传产品信息：-4" class="headerlink" title="上传产品信息："></a>上传产品信息：</h3><p><strong>软件介绍：</strong>不少于20个字</p>
+<p><strong>上传logo：</strong>要求与安装包中图标一致。尺寸：512<code>*</code>512px，图片格式：PNG，小于1M  </p>
+<p><strong>上传截图：</strong>上传3-5张截图，支持JPG、PNG格式。截图尺寸要求：1080<code>*</code>1920，单张图片不能超过1M。去除截图中的顶部状态栏的通知图标，图片中不得使用其他品牌的手机作为边框或宣传图</p>
+<p><strong>软件版权证明：</strong>上传软著扫描件，如果无软著请上传2-3个其他市场（华为、小米、应用宝市场其中最少两个）后台上架截图供审核人员参考，以及上传<a href="https://open.oppomobile.com/wiki/index#id=73364" target="_blank" rel="noopener">免责函</a>。特殊类应用必须上传软著，特别类资质标准请参考<a href="https://open.oppomobile.com/wiki/index#id=73442" target="_blank" rel="noopener">应用资质审核规范</a>。</p>
+<h2 id="6-vivo开放平台"><a href="#6-vivo开放平台" class="headerlink" title="6. vivo开放平台"></a>6. <a href="https://open.oppomobile.com/" target="_blank" rel="noopener">vivo开放平台</a></h2><h3 id="完善开发者账号信息-5"><a href="#完善开发者账号信息-5" class="headerlink" title="完善开发者账号信息"></a>完善开发者账号信息</h3><p><strong>企业营业执照、开户许可证</strong></p>
+<p><strong>法人身份证号，及法人手持身份证照</strong></p>
+<p><strong>绑定邮箱</strong></p>
+<h3 id="上传产品信息：-5"><a href="#上传产品信息：-5" class="headerlink" title="上传产品信息："></a>上传产品信息：</h3><p><strong>上传ICON ：</strong>支持jpg/png格式,尺寸要求长等于宽,不低于256<code>*</code>256,不超过512<code>*</code>512,圆角不超过48px,大小50k以内</p>
+<p><strong>上传截图 ：</strong>3-5张清晰截图。尺寸为竖图480*800，格式为jpg/png，每张图片尺寸一致，单张图片不超过2MB。</p>
+<p>非特殊应用无需提供额外证明，特殊类应用参见<a href="https://dev.vivo.com.cn/doc/document/info?id=90" target="_blank" rel="noopener">特殊应用资质要求</a></p>
+<h1 id="国外Android-APP-上架"><a href="#国外Android-APP-上架" class="headerlink" title="国外Android APP 上架"></a>国外Android APP 上架</h1><h2 id="1-Google-Play"><a href="#1-Google-Play" class="headerlink" title="1. Google Play"></a>1. <a href="https://play.google.com/apps/publish" target="_blank" rel="noopener">Google Play</a></h2><p>更多详细教程参考：<a href="https://www.jianshu.com/p/7c97aa9c5fb6" target="_blank" rel="noopener">https://www.jianshu.com/p/7c97aa9c5fb6</a>、<a href="https://www.jianshu.com/p/6cc83e1b3907" target="_blank" rel="noopener">https://www.jianshu.com/p/6cc83e1b3907</a></p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>[1]<a href="https://www.jianshu.com/p/dfaeb0019880" target="_blank" rel="noopener">https://www.jianshu.com/p/dfaeb0019880</a></p>
+<p>[2]<a href="https://www.jianshu.com/p/7c97aa9c5fb6" target="_blank" rel="noopener">https://www.jianshu.com/p/7c97aa9c5fb6</a></p>
+<p>[3]<a href="https://www.jianshu.com/p/6cc83e1b3907" target="_blank" rel="noopener">https://www.jianshu.com/p/6cc83e1b3907</a></p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Neary Li</span>
+                    </p>
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="../../../../tags/Android/"># Android</a>
+                    
+                        <a href="../../../../tags/APP%E4%B8%8A%E6%9E%B6/"># APP上架</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="../../../../2021/02/28/Web-Study-01/">Web Study 01</a>
+            
+            
+            <a class="next" rel="next" href="../../10/%E5%8D%8F%E5%90%8C%E8%AF%AD%E9%9F%B3%E4%BA%A4%E4%BA%92%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/">协同语音交互环境部署</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+
+
+    <div class="copyright">
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>    <span id="busuanzi_container_site_pv">
+                    总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+            <span id="busuanzi_container_site_uv">
+                    总访客数<span id="busuanzi_value_site_uv"></span>人
+            </span> 
+            <br>
+        <span>copyright &copy 2021 Neary Li. All rights reserved.</span>
+    </div>
+    
+</footer>
+
+    </div>
+</body>
+</html>

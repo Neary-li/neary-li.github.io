@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Neary Li">
+
+
+
+
+    <meta name="keywords" content="IT">
+
+
+<title>Git使用教程 | Neary-Li&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="../../../../favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="../../../../css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="../../../../js/script.js"></script>
+    
+    <script src="../../../../js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Neary&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="../../../../archives">Posts</a>
+                
+                    <a class="menu-item" href="../../../../category">Categories</a>
+                
+                    <a class="menu-item" href="../../../../tag">Tags</a>
+                
+                    <a class="menu-item" href="../../../../about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Neary&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="../../../../archives">Posts</a>
+                
+                    <a class="menu-item" href="../../../../category">Categories</a>
+                
+                    <a class="menu-item" href="../../../../tag">Tags</a>
+                
+                    <a class="menu-item" href="../../../../about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Git使用教程</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Neary Li</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">August 13, 2021&nbsp;&nbsp;14:42:03</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="../../../../categories/Git/">Git</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h3 id="1、新建"><a href="#1、新建" class="headerlink" title="1、新建"></a>1、新建</h3><ul>
+<li><p><code>git clone [url]</code>: <font color="green">克隆一个项目和它整个代码历史</font></p>
+</li>
+<li><p><code>git init [project-name]</code>: 新建一个目录，并初始化为本地版本库</p>
+</li>
+</ul>
+<h3 id="2、配置"><a href="#2、配置" class="headerlink" title="2、配置"></a>2、配置</h3><ul>
+<li><p><code>git config --list</code> 显示当前的 git 配置</p>
+</li>
+<li><p><code>git config -e [--global]</code> 编辑 Git 配置文件</p>
+</li>
+</ul>
+<p>设置提交代码时的用户信息</p>
+<ul>
+<li><code>git config [--global] user.name “[name]”</code></li>
+<li><code>Git config [--global] user.email “[email address]”</code></li>
+</ul>
+<h3 id="3、增-删文件"><a href="#3、增-删文件" class="headerlink" title="3、增/删文件"></a>3、增/删文件</h3><ul>
+<li><p><code>git add .</code><font color="green">添加当前目录的所有文件到暂存区</font></p>
+</li>
+<li><p><code>Git add [file]</code> 添加指定文件或者目录</p>
+</li>
+<li><p><code>git rm [file1]</code>删除工作区文件，并将这次删除放入暂存区</p>
+</li>
+</ul>
+<h3 id="4、代码提交"><a href="#4、代码提交" class="headerlink" title="4、代码提交"></a>4、代码提交</h3><ul>
+<li><code>Git commit -m [message]</code> <font color="green">提交暂存区到仓库区</font></li>
+</ul>
+<h3 id="5、分支"><a href="#5、分支" class="headerlink" title="5、分支"></a>5、分支</h3><ul>
+<li><p><code>Git branch</code> 列出所有本地分支</p>
+</li>
+<li><p><code>Git branch -r</code> 列出所有远程分支</p>
+</li>
+<li><p><code>Git branch -a</code> 列出所有本地分支和远程分支</p>
+</li>
+<li><p><code>Git merge</code> 合并指定分支到当前分支</p>
+</li>
+<li><p><code>Git checkout</code> 切换分支</p>
+</li>
+</ul>
+<h3 id="6、远程同步"><a href="#6、远程同步" class="headerlink" title="6、远程同步"></a>6、远程同步</h3><ul>
+<li><code>Git fetch [remote]</code> 下载远程仓库的所有变动</li>
+<li><code>Git remote -v</code> 显示所有远程仓库</li>
+<li><code>Git push</code><font color="green">上传本地指定分支到远程仓库</font></li>
+<li><code>Git push [remote] --force</code> 强行推送当前分支到远程仓库，即使有冲突</li>
+<li><code>Git push [remote] --all</code> 推送所有分支到远程仓库</li>
+<li><code>Git pull [remote] [branch]</code><font color="green">取回远程仓库的变化，并于本地分支合并</font></li>
+</ul>
+<h3 id="7、查看"><a href="#7、查看" class="headerlink" title="7、查看"></a>7、查看</h3><ul>
+<li><code>Git log</code> 显示当前分支的版本历史</li>
+<li><code>Git diff</code> 显示暂存区与工作区的差异</li>
+<li><code>Git reflog</code> 显示当前分支的最近几次提交</li>
+</ul>
+<h3 id="8、撤回回退"><a href="#8、撤回回退" class="headerlink" title="8、撤回回退"></a>8、撤回回退</h3><ul>
+<li><code>Git reset</code></li>
+</ul>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Neary Li</span>
+                    </p>
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="../../../../tags/Git/"># Git</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="../../20/Java-Base/">Java_Base</a>
+            
+            
+            <a class="next" rel="next" href="../../../04/04/offer8-14/">offer8-14</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+
+
+    <div class="copyright">
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>    <span id="busuanzi_container_site_pv">
+                    总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+            <span id="busuanzi_container_site_uv">
+                    总访客数<span id="busuanzi_value_site_uv"></span>人
+            </span> 
+            <br>
+        <span>copyright &copy 2021 Neary Li. All rights reserved.</span>
+    </div>
+    
+</footer>
+
+    </div>
+</body>
+</html>

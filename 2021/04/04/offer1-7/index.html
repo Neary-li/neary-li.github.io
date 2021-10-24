@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Neary Li">
+
+
+
+
+    <meta name="keywords" content="IT">
+
+
+<title>offer1-7 | Neary-Li&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="../../../../favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="../../../../css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="../../../../js/script.js"></script>
+    
+    <script src="../../../../js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Neary&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="../../../../archives">Posts</a>
+                
+                    <a class="menu-item" href="../../../../category">Categories</a>
+                
+                    <a class="menu-item" href="../../../../tag">Tags</a>
+                
+                    <a class="menu-item" href="../../../../about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Neary&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="../../../../archives">Posts</a>
+                
+                    <a class="menu-item" href="../../../../category">Categories</a>
+                
+                    <a class="menu-item" href="../../../../tag">Tags</a>
+                
+                    <a class="menu-item" href="../../../../about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">offer1-7</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Neary Li</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">April 4, 2021&nbsp;&nbsp;10:18:22</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @Description: 剑指offer 1-6题</span></span><br><span class="line"><span class="comment"> * @Version: 2.0</span></span><br><span class="line"><span class="comment"> * @Autor: Neary Lee</span></span><br><span class="line"><span class="comment"> * @Date: 2021-04-02 16:31:38</span></span><br><span class="line"><span class="comment"> * @LastEditors: Neary Lee</span></span><br><span class="line"><span class="comment"> * @LastEditTime: 2021-04-03 15:49:53</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// 1.在一个长度为 n 的数组 nums 里的所有数字都在 0～ n - 1 的范围内。 数组中某些数字是重复的， 但不知道有几个数字重复了， 也不知道每个数字重复了几次。 请找出数组中任意一个重复的数字。</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> findRepeatNumber = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// let map = &#123;&#125;;</span></span><br><span class="line">  <span class="keyword">let</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">    map[nums[i]] ? map[nums[i]]++ : (map[nums[i]] = <span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> map) &#123;</span><br><span class="line">    <span class="keyword">if</span> (map[key] &gt;= <span class="number">2</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> key;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(findRepeatNumber([<span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>]));</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 2.在一个二维数组中（ 每个一维数组的长度相同）， 每一行都按照从左到右递增的顺序排序， 每一列都按照从上到下递增的顺序排序。 请完成一个函数， 输入这样的一个二维数组和一个整数， 判断数组中是否含有该整数。</span></span><br><span class="line"><span class="comment">    [</span></span><br><span class="line"><span class="comment">        [1, 2, 8, 9],</span></span><br><span class="line"><span class="comment">        [2, 4, 9, 12],</span></span><br><span class="line"><span class="comment">        [4, 7, 10, 13],</span></span><br><span class="line"><span class="comment">        [6, 8, 11, 15]</span></span><br><span class="line"><span class="comment">    ]</span></span><br><span class="line"><span class="comment">给定 target = 7， 返回 true。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">给定 target = 3， 返回 false。 */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = [</span><br><span class="line">  [<span class="number">1</span>, <span class="number">2</span>, <span class="number">8</span>, <span class="number">9</span>],</span><br><span class="line">  [<span class="number">2</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">12</span>],</span><br><span class="line">  [<span class="number">4</span>, <span class="number">7</span>, <span class="number">10</span>, <span class="number">13</span>],</span><br><span class="line">  [<span class="number">6</span>, <span class="number">8</span>, <span class="number">11</span>, <span class="number">15</span>],</span><br><span class="line">];</span><br><span class="line"><span class="built_in">console</span>.log(arr[arr.length - <span class="number">1</span>][<span class="number">0</span>]); <span class="comment">// 6</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Find</span>(<span class="params">target, array</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// write code here</span></span><br><span class="line">  <span class="keyword">const</span> n = array.length, <span class="comment">// 获取二维数组的行</span></span><br><span class="line">    m = array[<span class="number">0</span>].length; <span class="comment">// 获取二维数组的列数</span></span><br><span class="line">  <span class="keyword">let</span> row = n - <span class="number">1</span>, <span class="comment">// 行从下往上遍历，最小为0</span></span><br><span class="line">    col = <span class="number">0</span>; <span class="comment">// 列从左往右遍历，且最大为m-1</span></span><br><span class="line">  <span class="comment">// 整个模块相当于从二维数组的左下角开始 即arr[arr.length-1][0]</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 边界情况</span></span><br><span class="line">  <span class="keyword">if</span> (m === <span class="number">0</span> &amp;&amp; n === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">while</span> (row &gt;= <span class="number">0</span> &amp;&amp; col &lt;= m - <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (array[row][col] &gt; target) &#123;</span><br><span class="line">      row--;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (array[row][col] &lt; target) &#123;</span><br><span class="line">      col++;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(Find(<span class="number">3</span>, arr));</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 3.请实现一个函数， 将一个字符串中的每个空格替换成“ % 20”。 例如， 当字符串为We Are Happy.则经过替换之后的字符串为We % 20 Are % 20 Happy */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> str = <span class="string">"We Are Happy"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">replaceSpace</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// write code here</span></span><br><span class="line">  <span class="keyword">let</span> str = s.replace(<span class="regexp">/ /g</span>, <span class="string">"20%"</span>);</span><br><span class="line">  <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(replaceSpace(str));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4.翻转链表  考点：栈</span></span><br><span class="line"><span class="comment">/*function ListNode(x)&#123;</span></span><br><span class="line"><span class="comment">    this.val = x;</span></span><br><span class="line"><span class="comment">    this.next = null;</span></span><br><span class="line"><span class="comment">&#125;*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printListFromTailToHead</span>(<span class="params">head</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// write code here</span></span><br><span class="line">  <span class="keyword">let</span> res = [];</span><br><span class="line">  <span class="keyword">let</span> pNode = head;</span><br><span class="line">  <span class="keyword">while</span> (pNode != <span class="literal">null</span>) &#123;</span><br><span class="line">    res.unshift(pNode.val);</span><br><span class="line">    pNode = pNode.next;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(printListFromTailToHead());</span><br><span class="line"></span><br><span class="line"><span class="comment">// 5.重构二叉树 递归思想</span></span><br><span class="line"><span class="comment">// 给定前序和中序遍历，求二叉树</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reConstructBinaryTree</span>(<span class="params">pre, vin</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// write code here</span></span><br><span class="line">  <span class="comment">// pre[0]为root节点</span></span><br><span class="line">  <span class="comment">// vin[indexOf(pre[0])] 在中序遍历中分为left right子树</span></span><br><span class="line">  <span class="keyword">let</span> root = pre[<span class="number">0</span>], <span class="comment">// 根节点</span></span><br><span class="line">    index = vin.indexOf(pre[<span class="number">0</span>]), <span class="comment">// 中序遍历中根节点的索引值</span></span><br><span class="line">    left = vin.slice(<span class="number">0</span>, index), <span class="comment">// 左子树</span></span><br><span class="line">    right = vin.slice(index + <span class="number">1</span>); <span class="comment">// 右子树</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (pre.length === <span class="number">0</span> || pre.length === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    val: pre[<span class="number">0</span>],</span><br><span class="line">    left: reConstructBinaryTree(pre.slice(<span class="number">1</span>, index + <span class="number">1</span>), left),</span><br><span class="line">    right: reConstructBinaryTree(pre.slice(index + <span class="number">1</span>), right),</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> pre = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>],</span><br><span class="line">  vin = [<span class="number">3</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">7</span>];</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"--------------------------------"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(reConstructBinaryTree(pre, vin));</span><br><span class="line"><span class="comment">// 用两个栈来实现一个队列， 完成队列的Push和Pop操作。 队列中的元素为int类型。</span></span><br><span class="line"><span class="keyword">const</span> inStack = [],</span><br><span class="line">  outStack = [];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">push</span>(<span class="params">node</span>) </span>&#123;</span><br><span class="line">  inStack.push(node);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pop</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (outStack.length === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">while</span> (inStack.length) &#123;</span><br><span class="line">      outStack.push(inStack.pop());</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> outStack.pop();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 6.把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。 输入一个非递减排序的数组的一个旋转，输出旋转数组的最小元素。 例如数组&#123;3,4,5,1,2&#125;为&#123;1,2,3,4,5&#125;的一个旋转，该数组的最小值为1。 NOTE：给出的所有元素都大于0，若数组大小为0，请返回0。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法1 利用 临界条件：arr[i]&gt; arr[i+1]</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">minNumberInRotateArray1</span>(<span class="params">rotateArray</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (rotateArray.length === <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; rotateArray.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (rotateArray[i] &gt; rotateArray[i + <span class="number">1</span>]) &#123;</span><br><span class="line">      <span class="keyword">return</span> rotateArray[i + <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(</span><br><span class="line">  <span class="string">"（方法1）旋转数组中的最小值："</span> + minNumberInRotateArray1([<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">2</span>])</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法2 二分法 二分法最后分完之后只剩两个元素，然后对这两个元素进行比大小</span></span><br><span class="line"><span class="comment">// 临界条件：</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">minNumberInRotateArray2</span>(<span class="params">rotateArray</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> left = <span class="number">0</span>,</span><br><span class="line">    right = rotateArray.length - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span> (right - left &gt; <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> mid = left + ((right - left) &gt;&gt; <span class="number">1</span>); <span class="comment">// 中间值</span></span><br><span class="line">    <span class="keyword">if</span> (rotateArray[mid] &gt; rotateArray[right]) &#123;</span><br><span class="line">      left = mid;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      right = mid;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.min(rotateArray[left], rotateArray[right]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(</span><br><span class="line">  <span class="string">"（方法2）旋转数组中的最小值："</span> + minNumberInRotateArray2([<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">2</span>])</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Neary Li</span>
+                    </p>
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="../../../../tags/%E7%AE%97%E6%B3%95/"># 算法</a>
+                    
+                        <a href="../../../../tags/JavaScript/"># JavaScript</a>
+                    
+                        <a href="../../../../tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"># 数据结构</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="../offer%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">offer基础知识</a>
+            
+            
+            <a class="next" rel="next" href="../../../03/30/HTML%E9%9D%A2%E8%AF%95%E9%A2%98/">HTML面试题</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+
+
+    <div class="copyright">
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>    <span id="busuanzi_container_site_pv">
+                    总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+            <span id="busuanzi_container_site_uv">
+                    总访客数<span id="busuanzi_value_site_uv"></span>人
+            </span> 
+            <br>
+        <span>copyright &copy 2021 Neary Li. All rights reserved.</span>
+    </div>
+    
+</footer>
+
+    </div>
+</body>
+</html>

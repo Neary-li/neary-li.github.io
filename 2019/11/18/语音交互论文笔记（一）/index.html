@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Neary Li">
+
+
+
+
+    <meta name="keywords" content="IT">
+
+
+<title>语音交互论文笔记（一） | Neary-Li&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="../../../../favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="../../../../css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="../../../../js/script.js"></script>
+    
+    <script src="../../../../js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Neary&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="../../../../archives">Posts</a>
+                
+                    <a class="menu-item" href="../../../../category">Categories</a>
+                
+                    <a class="menu-item" href="../../../../tag">Tags</a>
+                
+                    <a class="menu-item" href="../../../../about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Neary&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="../../../../archives">Posts</a>
+                
+                    <a class="menu-item" href="../../../../category">Categories</a>
+                
+                    <a class="menu-item" href="../../../../tag">Tags</a>
+                
+                    <a class="menu-item" href="../../../../about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">语音交互论文笔记（一）</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Neary Li</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">November 18, 2019&nbsp;&nbsp;17:20:25</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="../../../../categories/%E8%AF%AD%E9%9F%B3%E4%BA%A4%E4%BA%92/">语音交互</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="机器人语音交互和语义识别的实现"><a href="#机器人语音交互和语义识别的实现" class="headerlink" title="机器人语音交互和语义识别的实现"></a>机器人语音交互和语义识别的实现</h1><h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>智能语音交互是目前人工智能领域研究的热点之一，越来越多的语音交互平台逐渐进入我们生活。</p>
+<p>语音交互包括<strong>语音识别和语义分析</strong>两个方面，本文也是基于这两个方面展开研究。在语音识别方面，本文先介绍了语音识别的总体框架，选择了语音识别算法中应用最广的隐马尔科夫模型，分析了其基本原理和语音识别的过程，随后阐述了利用 HTK（Hidden  Markov Model Toolkit）实现语音识别的详细流程，并进行实验和分析。在语义分析方面，本文先介绍了自然语言处理的相关理论，并利用卷积神经网络进行语义分析。传统的卷积神经网络是由线性卷积层和池化层顺序连接组成，能够对图像、语音和文本等数据进行特征提取。本文提出以跨通道级联卷积层替代传统线性卷积滤波器，对基本的卷积神经网络进行改进，并以情感分析和问题分类为例，对基于改进卷积神经网络的语义分析模型进行实验分析。实验表明，改进后的卷积神经网络在保证训练速度的情况下，识别效果优于传统的卷积神经网络，有较好的识别能力。  </p>
+<blockquote>
+<p>my_idea:语音交互包括语音识别、语义理解、对话语音合成。<br>人机交互：计算机与用户之间的双向通信，也就是双向的信息交互，即可以由用户向计算机输入信息，也可以由计算机向用户反馈信息。  </p>
+</blockquote>
+<p>通过语音识别技术和自然语言处理技术，人机交互逐渐从键盘和鼠标等传统手动的输入手段中得到解放，不仅大大提高了人们获取信息的效率，还使得计算机能够替代一部分的人力完成生产工作，推动了社会的进步。另外随着智能设备影响的扩大，用户群逐步向老龄人群、低龄人群、身体残障人群渗透扩散的趋势非常明显，而语音交互也更适合拓展智能设备新的用户人群。   </p>
+<blockquote>
+<p>现有的交互技术主要依据人类不同感官进行设计，运用较广的由视觉和听觉。<br>视觉：<img src="/2019/11/18/%E8%AF%AD%E9%9F%B3%E4%BA%A4%E4%BA%92%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/1.jpg" alt><br>听觉：<img src="/2019/11/18/%E8%AF%AD%E9%9F%B3%E4%BA%A4%E4%BA%92%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/2.jpg" alt></p>
+</blockquote>
+<p><strong>循环神经网络</strong>（Recurrent Neural Networks，RNN）是在传统前向反馈神经网络（FNN）的基础上加入定向循环的模型，用于处理时间序列。在 FNN 中，原始数据从输入层到隐层，再从隐层到输出层，其中层与层之间是全连接的，但每一层的单元都是独立的，这样大大降低了网络的复杂度，但是也带来了一定的问题。在自然语言中，词和词之间是有联系的，在建立语言模型的时候，需要通过上下文计算下一个词出现的概率，而 RNN 最大的优势在于能够通过前文的信息预测下一个词。RNN 保留了前面信息的记忆并应用于当前计算，也就是说对于隐层和输出层来说，不仅依赖当前输入序列的信息，还包括了前一时段输入的信息。RNN网络结构图如下所示：<br><img src="/2019/11/18/%E8%AF%AD%E9%9F%B3%E4%BA%A4%E4%BA%92%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/3.png" alt>  </p>
+<p><strong>卷积神经网络</strong>(Convolutional  Neural Networks, CNN)是一种基于深度神经网络(Deep Neural  Networks, DNN)的模型，一般由<em>卷积层、池化层和全连接层堆叠</em>而成，  </p>
+<h1 id="基于语音交互的手持移动多通道交互研究"><a href="#基于语音交互的手持移动多通道交互研究" class="headerlink" title="基于语音交互的手持移动多通道交互研究"></a>基于语音交互的手持移动多通道交互研究</h1><blockquote>
+<p>专业：设计艺术学</p>
+</blockquote>
+<h3 id="研究背景与意义"><a href="#研究背景与意义" class="headerlink" title="研究背景与意义"></a>研究背景与意义</h3><p>短短几十年的时间，计算机已经从一中程序复杂的庞然大物，发展成为人类日常生活中不可或缺的机器助手。计算机的用户范围早已从高精尖的专业人士延伸至普通百姓。人类与计算机的交互已经从人类被动学习操作计算机过渡到计算机主动顺应人类习惯的阶段。<strong>人类社会的信息化、智能化提高，移动终端的发展普及，都对原有的信息获取和沟通模式提出了更高的要求。因此，随着个方面科学技术的发展，人机交互操作方式不在局限于传统的键盘、鼠标操作，而是有了更多新奇的可能。眼球追踪、动作捕捉、肌电模拟、触觉反馈、语音交互、手势跟踪等新兴虚拟现实技术，昭示了人类发展的跟多前景可能，也极大地丰富了人类的生活乐趣。</strong>  </p>
+<p>语言是人类最原始、最本能的沟通交流方式。比尔·盖茨早在2007年就有过相关预测，他预言在未来语言技术将取代传统键鼠成为主流交互方式，终端设备会打破屏幕和操作的限制，将语音交互作为人机交互技术的首选。<strong>语音交互是研究人与计算机对话的技术。语音交互具有高效性、自然性、灵活性、敏感性、短暂性等特点，有着认知负荷小、交互效率高等优点。但也有一些不可避免的缺点，如对周围的环境有较高的要求，即噪声不能过大，信息具有模糊性，记忆负荷大等。</strong> 每一种交互方式都有优缺点，单一通道的交互都存在着过度使用用户某一生理资源的问题。因此，比较理想的解决办法就是调用用户的多项生力资源，进行多通道交互。本文主要研究语音交互，并思考了怎么结合手势交互和视觉交互，以期待提高人机交互的自然程度和交互效率</p>
+<h3 id="语音交互技术发展现状"><a href="#语音交互技术发展现状" class="headerlink" title="语音交互技术发展现状"></a>语音交互技术发展现状</h3><ol>
+<li>语音识别技术  </li>
+</ol>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Neary Li</span>
+                    </p>
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="../../../../tags/%E5%A3%B0%E9%9F%B3%E8%AE%BE%E8%AE%A1/"># 声音设计</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="../%E5%9B%BE%E7%89%87test/">图片test</a>
+            
+            
+            <a class="next" rel="next" href="../%E3%80%8A%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/">《神经网络与深度学习》读书笔记（一）</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+
+
+    <div class="copyright">
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>    <span id="busuanzi_container_site_pv">
+                    总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+            <span id="busuanzi_container_site_uv">
+                    总访客数<span id="busuanzi_value_site_uv"></span>人
+            </span> 
+            <br>
+        <span>copyright &copy 2021 Neary Li. All rights reserved.</span>
+    </div>
+    
+</footer>
+
+    </div>
+</body>
+</html>

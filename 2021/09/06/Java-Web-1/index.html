@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Neary Li">
+
+
+
+
+    <meta name="keywords" content="IT">
+
+
+<title>Java-Web(1) | Neary-Li&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="../../../../favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="../../../../css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="../../../../js/script.js"></script>
+    
+    <script src="../../../../js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Neary&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="../../../../archives">Posts</a>
+                
+                    <a class="menu-item" href="../../../../category">Categories</a>
+                
+                    <a class="menu-item" href="../../../../tag">Tags</a>
+                
+                    <a class="menu-item" href="../../../../about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Neary&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="../../../../archives">Posts</a>
+                
+                    <a class="menu-item" href="../../../../category">Categories</a>
+                
+                    <a class="menu-item" href="../../../../tag">Tags</a>
+                
+                    <a class="menu-item" href="../../../../about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Java-Web(1)</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Neary Li</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">September 6, 2021&nbsp;&nbsp;15:00:04</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="../../../../categories/Java/">Java</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h3 id="1、Tomcat"><a href="#1、Tomcat" class="headerlink" title="1、Tomcat"></a>1、Tomcat</h3><h4 id="1-1-安装"><a href="#1-1-安装" class="headerlink" title="1.1 安装"></a>1.1 安装</h4><p>下载地址：<a href="https://tomcat.apache.org/download-10.cgi" target="_blank" rel="noopener">https://tomcat.apache.org/download-10.cgi</a></p>
+<p><img src="/2021/09/06/Java-Web-1/image-20210906153135689.png" alt="image-20210906153135689"></p>
+<h4 id="1-2-启动与配置"><a href="#1-2-启动与配置" class="headerlink" title="1.2 启动与配置"></a>1.2 启动与配置</h4><p><img src="/2021/09/06/Java-Web-1/image-20210906152914790.png" alt="image-20210906152914790"></p>
+<h4 id="1-3-配置"><a href="#1-3-配置" class="headerlink" title="1.3 配置"></a>1.3 配置</h4><p><img src="/2021/09/06/Java-Web-1/image-20210906153342805.png" alt="image-20210906153342805"></p>
+<p>​ 此处可以配置启动的端口号。</p>
+<p><img src="/2021/09/06/Java-Web-1/image-20210906153836988.png" alt></p>
+<p>此处可以配置启动的主机名（域名），默认网站存放位置为<code>webapps</code></p>
+<p><img src="/2021/09/06/Java-Web-1/image-20210906154003939.png" alt="image-20210906154003939"></p>
+<p>接下来 进行对主机进行如下配置：</p>
+<p><img src="/2021/09/06/Java-Web-1/image-20210906151615080.png" alt="image-20210906151615080"></p>
+<p><img src="/2021/09/06/Java-Web-1/image-20210906152246016.png" alt="image-20210906152246016"></p>
+<p>此时，就可以在浏览器中直接以 <a href="http://www.neary_lee.com" target="_blank" rel="noopener">www.neary_lee.com</a> 进行访问。</p>
+<h4 id="经典面试题"><a href="#经典面试题" class="headerlink" title="*经典面试题"></a>*经典面试题</h4><p>谈谈网站是如何进行访问的？</p>
+<ol>
+<li>输入一个域名，回车</li>
+<li>检查本机的 C:\Windows\Sysrem\drivers\etc\hosts 配置文件下有没有这个域名的映射<ul>
+<li>有：直接返回对应的 ip 地址，这个地址中，有我们需要访问的 Web 程序，可以直接访问</li>
+<li>没有： 去 DNS 服务器找（DNS 服务器用于管理全世界的所有域名），找到的话就返回，找不到则返回找不到。</li>
+</ul>
+</li>
+</ol>
+<h4 id="1-4-配置一个环境变量（可选）"><a href="#1-4-配置一个环境变量（可选）" class="headerlink" title="1.4 配置一个环境变量（可选）"></a>1.4 配置一个环境变量（可选）</h4><h4 id="1-5-发布网站"><a href="#1-5-发布网站" class="headerlink" title="1.5 发布网站"></a>1.5 发布网站</h4><ul>
+<li>将自己写的网站放入服务器中指定的 web 文件夹下（webapps），就可以访问了</li>
+<li>网站的一般目录结构</li>
+</ul>
+<p><img src="/2021/09/06/Java-Web-1/image-20210906170343889.png" alt="image-20210906170343889"></p>
+<h3 id="2、HTTP"><a href="#2、HTTP" class="headerlink" title="2、HTTP"></a>2、HTTP</h3><h4 id="2-1-定义"><a href="#2-1-定义" class="headerlink" title="2.1 定义"></a>2.1 定义</h4><p>HTTP : 超文本传输协议（Hyper Text Transfer Protocol）是一个简单的请求-响应协议，它通常运行在 TCP 之上。它指定了客户端可能发送给服务器什么样的消息以及得到什么样的响应。</p>
+<ul>
+<li>超文本：图片、音乐、视频、定位、地图……</li>
+<li>80</li>
+</ul>
+<p>HTTPS SSL/TLS</p>
+<ul>
+<li>443</li>
+</ul>
+<h4 id="2-2-两个时代"><a href="#2-2-两个时代" class="headerlink" title="2.2 两个时代"></a>2.2 <a href="https://zhuanlan.zhihu.com/p/37387316" target="_blank" rel="noopener">两个时代</a></h4><ul>
+<li>http 1.0<ul>
+<li>HTTP/1.0 : 客户端可以与 Web 服务器连接后，只能获得一个 Web 资源，断开连接</li>
+</ul>
+</li>
+<li>http2.0<ul>
+<li>HTTP/1.1 : 客户端可以与 Web 服务器连接后，可以获得多个 Web 资源，断开连接</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-3-HTTP-请求"><a href="#2-3-HTTP-请求" class="headerlink" title="2.3 HTTP 请求"></a>2.3 HTTP 请求</h4><p>公共部分：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Request URL: https:<span class="comment">//www.baidu.com/  //</span></span><br><span class="line">Request Method: GET</span><br><span class="line">Status Code: <span class="number">200</span> OK</span><br><span class="line">Remote Address: <span class="number">163.177</span><span class="number">.151</span><span class="number">.109</span>:<span class="number">443</span></span><br><span class="line">Referrer Policy: strict-origin-when-cross-origin</span><br></pre></td></tr></table></figure>
+
+<p>请求部分</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Accept: text/html</span><br><span class="line">Accept-Encoding: gzip, deflate, br</span><br><span class="line">Accept-Language: zh-CN,zh;q=<span class="number">0.9</span></span><br><span class="line">Cache-Control: max-age=<span class="number">0</span></span><br><span class="line">Connection: keep-alive</span><br><span class="line">Cookie: BIDUPSID=BFDA2F5296F780ECE8C62DDF740C49F5; PSTM=<span class="number">1610812793</span>; BAIDUID=BFDA2F5296F780EC5C4D1D8709A19CEB:FG=<span class="number">1</span>; H_WISE_SIDS=<span class="number">107315_110085_127969_137817_151533_154212_164071_165136_166147_167537_168490_168540_169066_169260_169308_170475_170619_170816_170955_171159_171211_171223_171235_171463_171632_171816_172019_172385_172591_172923_172996_173017_173034_173125_173127_173130_173202_173243_173370_173387_173414_173572_173576</span>; __yjs_duid=<span class="number">1_5</span>cc0fa9aa601c1251eb7f252834364e21620394114759; BAIDUID_BFESS=<span class="number">5</span>A7B01010A4FF643333A7C3E48323CB8:FG=<span class="number">1</span>; MAWEBCUID=web_EBdTwfUogfNxjDVfttwgZgCdWMgKfqLPUozTqcSFquDLsCHpAO; BDUSS=c5VjgtY1hDcDVmai03LX5LMG5LMDhRNlp-QkV5RG1DQXAwNnU0MWFwdmdJMDloSVFBQUFBJCQAAAAAAAAAAAEAAABJaR9Yx6O76nbP-rvqAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOCWJ2Hglidhcl; BDUSS_BFESS=c5VjgtY1hDcDVmai03LX5LMG5LMDhRNlp-QkV5RG1DQXAwNnU0MWFwdmdJMDloSVFBQUFBJCQAAAAAAAAAAAEAAABJaR9Yx6O76nbP-rvqAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOCWJ2Hglidhcl; COOKIE_SESSION=<span class="number">1072_1_7_7_11_29_0_3_4_7_87_2_569_0_69_0_1629985623_1629984541_1629985692</span>%<span class="number">7</span>C9%<span class="number">232185603_18_1629984620</span>%<span class="number">7</span>C9; BD_HOME=<span class="number">1</span>; H_PS_PSSID=<span class="number">34532_34496_31253_34004_34092_34106_26350_34555</span>; BD_UPN=<span class="number">12314753</span>; sug=<span class="number">3</span>; sugstore=<span class="number">1</span>; ORIGIN=<span class="number">0</span>; bdime=<span class="number">0</span>; BA_HECTOR=<span class="number">8l</span>a42ha5al8ka18knr1gjc3c30q</span><br><span class="line">Host: www.baidu.com</span><br><span class="line">sec-ch-ua: <span class="string">"Google Chrome"</span>;v=<span class="string">"93"</span>, <span class="string">" Not;A Brand"</span>;v=<span class="string">"99"</span>, <span class="string">"Chromium"</span>;v=<span class="string">"93"</span></span><br><span class="line">sec-ch-ua-mobile: ?<span class="number">0</span></span><br><span class="line">sec-ch-ua-platform: <span class="string">"Windows"</span></span><br><span class="line">Sec-Fetch-Dest: document</span><br><span class="line">Sec-Fetch-Mode: navigate</span><br><span class="line">Sec-Fetch-Site: none</span><br><span class="line">Sec-Fetch-User: ?<span class="number">1</span></span><br><span class="line">Upgrade-Insecure-Requests: <span class="number">1</span></span><br><span class="line">User-Agent: Mozilla/<span class="number">5.0</span> (Windows NT <span class="number">10.0</span>; Win64; x64) AppleWebKit/<span class="number">537.36</span> (KHTML, like Gecko) Chrome/<span class="number">93.0</span><span class="number">.4577</span><span class="number">.63</span> Safari/<span class="number">537.36</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><h4 id="请求行"><a href="#请求行" class="headerlink" title="请求行"></a>请求行</h4><ul>
+<li>请求行中的请求方式：GET</li>
+<li><a href>请求方式：GET POST HEAD DELEETE PUT…</a><ul>
+<li>get : 请求能够携带的参数比较少，大小有限制，会在浏览器的 URL 地址显示数据内容，不安全，但高效</li>
+<li>post : 请求能够携带的参数没有限制，大小没有限制，不会在浏览器的 URL 地址显示数据内容，安全，但不高效</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h4 id="消息头"><a href="#消息头" class="headerlink" title="消息头"></a>消息头</h4></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Accept: text/html                        <span class="comment">// 告诉浏览器，它所支持的数据类型</span></span><br><span class="line">Accept-Encoding: gzip, deflate, br       <span class="comment">//支持的编码格式</span></span><br><span class="line">Accept-Language: zh-CN,zh;q=<span class="number">0.9</span>          <span class="comment">// 告诉浏览器他的语言环境</span></span><br><span class="line">Cache-Control: max-age=<span class="number">0</span>                 <span class="comment">// 缓存控制</span></span><br><span class="line">Connection: keep-alive                   <span class="comment">// 告诉浏览器请求完成是断开还是保持</span></span><br><span class="line">Host                                     <span class="comment">// 主机</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-4-HTTP-响应"><a href="#2-4-HTTP-响应" class="headerlink" title="2.4 HTTP 响应"></a>2.4 HTTP 响应</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Bdpagetype: <span class="number">2</span></span><br><span class="line">Bdqid: <span class="number">0xddd14dd80007ca7f</span></span><br><span class="line">Cache-Control: <span class="keyword">private</span></span><br><span class="line">Connection: keep-alive</span><br><span class="line">Content-Encoding: gzip</span><br><span class="line">Content-Type: text/html;charset=utf-<span class="number">8</span></span><br><span class="line">Date: Mon, <span class="number">06</span> Sep <span class="number">2021</span> <span class="number">12</span>:<span class="number">49</span>:<span class="number">26</span> GMT</span><br><span class="line">Expires: Mon, <span class="number">06</span> Sep <span class="number">2021</span> <span class="number">12</span>:<span class="number">49</span>:<span class="number">26</span> GMT</span><br><span class="line">Server: BWS/<span class="number">1.1</span></span><br><span class="line">Set-Cookie: BDSVRTM=<span class="number">265</span>; path=/</span><br><span class="line">Set-Cookie: BD_HOME=<span class="number">1</span>; path=/</span><br><span class="line">Set-Cookie: H_PS_PSSID=<span class="number">34532_34496_31253_34004_34092_34106_26350_34555</span>; path=/; domain=.baidu.com</span><br><span class="line">Strict-Transport-Security: max-age=<span class="number">172800</span></span><br><span class="line">Traceid: <span class="number">1630932566045583207415983642142623386239</span></span><br><span class="line">Transfer-Encoding: chunked</span><br><span class="line">X-Frame-Options: sameorigin</span><br><span class="line">X-Ua-Compatible: IE=Edge,chrome=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><h4 id="响应体"><a href="#响应体" class="headerlink" title="响应体"></a>响应体</h4></li>
+</ol>
+<p><img src="/2021/09/06/Java-Web-1/image-20210906213320372.png" alt="image-20210906213320372"></p>
+<ol start="2">
+<li><h4 id="响应状态码"><a href="#响应状态码" class="headerlink" title="响应状态码"></a><a href>响应状态码</a></h4><ul>
+<li>200 ： 请求响应成功</li>
+<li>3xx ：请求重定向</li>
+<li>4xx ：请求的资源不存在</li>
+<li>5xx : 服务器代码错误</li>
+</ul>
+</li>
+</ol>
+<h4 id="参见面试题"><a href="#参见面试题" class="headerlink" title="*参见面试题"></a>*参见面试题</h4><p>当你的浏览器中地址栏输入地址并回车的一瞬间到页面能够展示回来，经历了什么？</p>
+<h3 id="3、Maven"><a href="#3、Maven" class="headerlink" title="3、Maven"></a>3、Maven</h3><p>为什么要用它？</p>
+<ol>
+<li>在 Java web 开发中，需要使用大量的 jar 包，手动导入太麻烦</li>
+<li>可以自动帮我们导入和配置 jar 包</li>
+</ol>
+<h4 id="3-1-Maven-架构管理工具"><a href="#3-1-Maven-架构管理工具" class="headerlink" title="3.1 Maven 架构管理工具"></a>3.1 Maven 架构管理工具</h4><p><strong>核心思想：约定大于配置</strong></p>
+<p>Maven 会规定好你如何去编写我们的 Java 代码，必须按照这个规定</p>
+<h4 id="3-2-下载安装"><a href="#3-2-下载安装" class="headerlink" title="3.2 下载安装"></a>3.2 下载安装</h4><p>官网：<a href="https://maven.apache.org/" target="_blank" rel="noopener">https://maven.apache.org/</a></p>
+<p><img src="/2021/09/06/Java-Web-1/image-20210906220254278.png" alt="image-20210906220254278"></p>
+<h4 id="3-3-配置环境变量"><a href="#3-3-配置环境变量" class="headerlink" title="3.3 配置环境变量"></a>3.3 配置环境变量</h4><p>在我们的系统环境变量中进行如下配置：</p>
+<ul>
+<li>M2_HOME E:\Software\apache-maven-3.6.3\bin</li>
+<li>MAVEN_HOME E:\Software\apache-maven-3.6.3</li>
+<li>在系统的 path 中配置 MAVEN_HOME %MAVEN_HOME%\bin</li>
+</ul>
+<p><img src="/2021/09/06/Java-Web-1/image-20210906221056875.png" alt="image-20210906221056875"></p>
+<h4 id="3-4-阿里云镜像"><a href="#3-4-阿里云镜像" class="headerlink" title="3.4 阿里云镜像"></a>3.4 阿里云镜像</h4><p><code>E:\Software\apache-maven-3.6.3\conf ------&gt; setting.xml 文件</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirrors</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--&lt;mirrorOf&gt;central&lt;/mirrorOf&gt; --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>*<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>其中<code>&lt;mirrorOf&gt;</code> 表示将作为所有 repository(包括默认的 central) 的下载</p>
+<h4 id="3-5-本地仓库"><a href="#3-5-本地仓库" class="headerlink" title="3.5 本地仓库"></a>3.5 本地仓库</h4><p>建立一个本地仓库 localRepository</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">localRepository</span>&gt;</span>E:\Software\apache-maven-3.6.3\maven-repo<span class="tag">&lt;/<span class="name">localRepository</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-6-在-IDEA-中使用-Maven"><a href="#3-6-在-IDEA-中使用-Maven" class="headerlink" title="3.6 在 IDEA 中使用 Maven"></a>3.6 在 IDEA 中使用 Maven</h4><ol>
+<li>启动，创建一个 Maven 项目 File –》New project –》Maven</li>
+</ol>
+<p><img src="/2021/09/06/Java-Web-1/image-20210906223635122.png" alt="image-20210906223635122"></p>
+<p><img src="/2021/09/06/Java-Web-1/image-20210906224357489.png" alt="image-20210906224357489"></p>
+<p><img src="/2021/09/06/Java-Web-1/image-20210906224836346.png" alt="image-20210906224836346"></p>
+<p><img src="/2021/09/06/Java-Web-1/image-20210906225223478.png" alt="image-20210906225223478"></p>
+<ol start="2">
+<li>IDEA 中的 Maven 设置 File —》 Setting</li>
+</ol>
+<p><img src="/2021/09/06/Java-Web-1/image-20210906230011796.png" alt="image-20210906230011796"></p>
+<p>另外可选配置：</p>
+<p><img src="/2021/09/06/Java-Web-1/image-20210906230451955.png" alt="image-20210906230451955"></p>
+<p>配置完成。</p>
+<h4 id="3-7-创建一个普通的-Maven-项目"><a href="#3-7-创建一个普通的-Maven-项目" class="headerlink" title="3.7 创建一个普通的 Maven 项目"></a>3.7 创建一个普通的 Maven 项目</h4><p>不使用任何模板</p>
+<p><img src="/2021/09/06/Java-Web-1/image-20210906230935815.png" alt="image-20210906230935815"></p>
+<p><img src="/2021/09/06/Java-Web-1/image-20210906231113258.png" alt="image-20210906231113258"></p>
+<p><img src="/2021/09/06/Java-Web-1/image-20210906231529630.png" alt="image-20210906231529630"></p>
+<p><img src="/2021/09/06/Java-Web-1/image-20210906231807193.png" alt="image-20210906231807193"></p>
+<h4 id="3-8-在-IDEA-中标记文件夹"><a href="#3-8-在-IDEA-中标记文件夹" class="headerlink" title="3.8 在 IDEA 中标记文件夹"></a>3.8 在 IDEA 中标记文件夹</h4><p>方法一：专业版<img src="/2021/09/06/Java-Web-1/image-20210906232307479.png" alt="image-20210906232307479"></p>
+<p>方法二</p>
+<p><img src="/2021/09/06/Java-Web-1/image-20210906232503437.png" alt="image-20210906232503437"></p>
+<p>方法三：File —》 Project Structure</p>
+<p><img src="/2021/09/06/Java-Web-1/image-20210906232722173.png" alt="image-20210906232722173"></p>
+<h4 id="3-9-在-IDEA-中配置-Tomcat"><a href="#3-9-在-IDEA-中配置-Tomcat" class="headerlink" title="3.9 在 IDEA 中配置 Tomcat"></a>3.9 在 IDEA 中配置 Tomcat</h4><p><img src="/2021/09/06/Java-Web-1/image-20210906233327934.png" alt="image-20210906233327934"></p>
+<p><img src="/2021/09/06/Java-Web-1/image-20210906233500054.png" alt="image-20210906233500054"></p>
+<p><img src="/2021/09/06/Java-Web-1/image-20210907141751747.png" alt="image-20210907141751747"></p>
+<p><img src="/2021/09/06/Java-Web-1/image-20210907141905316.png" alt="image-20210907141905316"></p>
+<p><img src="/2021/09/06/Java-Web-1/image-20210907142801353.png" alt="image-20210907142801353"></p>
+<p><strong>解决警告问题：</strong></p>
+<p><strong>为什么会有这个问题: 我们访问一个网站，需要指定一个文件夹的名字。</strong></p>
+<p>点击启动按钮</p>
+<p><img src="/2021/09/06/Java-Web-1/image-20210907143452845.png" alt="image-20210907143452845"></p>
+<h4 id="3-10-pom-xml-文件"><a href="#3-10-pom-xml-文件" class="headerlink" title="3.10 pom.xml 文件"></a>3.10 pom.xml 文件</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.neary<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>javaweb-01-maven<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">packaging</span>&gt;</span>war<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>javaweb-01-maven Maven Webapp<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- FIXME change it to the project's website --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://www.example.com<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">project.build.sourceEncoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">project.build.sourceEncoding</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">maven.compiler.source</span>&gt;</span>1.7<span class="tag">&lt;/<span class="name">maven.compiler.source</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">maven.compiler.target</span>&gt;</span>1.7<span class="tag">&lt;/<span class="name">maven.compiler.target</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.11<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">finalName</span>&gt;</span>javaweb-01-maven<span class="tag">&lt;/<span class="name">finalName</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">pluginManagement</span>&gt;</span><span class="comment">&lt;!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-clean-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-resources-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.8.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-surefire-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.22.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-war-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.2.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-install-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.5.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-deploy-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.8.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">pluginManagement</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>Maven 的高级之处在于自动导入依赖所依赖的 JAR 包。</p>
+<p>Maven 存在的一个问题，只能导出资源为 java 文件，为了也可以导出其他文件，需要对 pom.xml 添加如下配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">	    <span class="comment">&lt;!--设置正常情况的resources目录下的properties文件--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">	    <span class="comment">&lt;!--配置路径--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/resources<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">				<span class="comment">&lt;!--包含什么文件--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.properties<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.xml<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!--设置java路径的properties文件--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/java<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.properties<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.xml<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/06/Java-Web-1/image-20210907151900165.png" alt="image-20210907151900165"></p>
+<p>替换成 4.0 版本</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">web-app</span> <span class="attr">xmlns</span>=<span class="string">"http://xmlns.jcp.org/xml/ns/javaee"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://xmlns.jcp.org/xml/ns/javaee</span></span></span><br><span class="line"><span class="tag"><span class="string">                      http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">version</span>=<span class="string">"4.0"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">metadata-complete</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-11-Maven-仓库的使用"><a href="#3-11-Maven-仓库的使用" class="headerlink" title="3.11 Maven 仓库的使用"></a>3.11 Maven 仓库的使用</h4><p>地址：<a href="https://mvnrepository.com/" target="_blank" rel="noopener">https://mvnrepository.com/</a></p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Neary Li</span>
+                    </p>
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="../../../../tags/java/"># java</a>
+                    
+                        <a href="../../../../tags/Web/"># Web</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="../../07/Java-Web-2/">Java-Web-2</a>
+            
+            
+            <a class="next" rel="next" href="../../03/%E6%B3%A8%E8%A7%A3%E4%B8%8E%E5%8F%8D%E5%B0%84/">Java-注解与反射</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+
+
+    <div class="copyright">
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>    <span id="busuanzi_container_site_pv">
+                    总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+            <span id="busuanzi_container_site_uv">
+                    总访客数<span id="busuanzi_value_site_uv"></span>人
+            </span> 
+            <br>
+        <span>copyright &copy 2021 Neary Li. All rights reserved.</span>
+    </div>
+    
+</footer>
+
+    </div>
+</body>
+</html>

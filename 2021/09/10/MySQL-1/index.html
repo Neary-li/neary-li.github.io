@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Neary Li">
+
+
+
+
+    <meta name="keywords" content="IT">
+
+
+<title>MySQL-1 | Neary-Li&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="../../../../favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="../../../../css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="../../../../js/script.js"></script>
+    
+    <script src="../../../../js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Neary&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="../../../../archives">Posts</a>
+                
+                    <a class="menu-item" href="../../../../category">Categories</a>
+                
+                    <a class="menu-item" href="../../../../tag">Tags</a>
+                
+                    <a class="menu-item" href="../../../../about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Neary&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="../../../../archives">Posts</a>
+                
+                    <a class="menu-item" href="../../../../category">Categories</a>
+                
+                    <a class="menu-item" href="../../../../tag">Tags</a>
+                
+                    <a class="menu-item" href="../../../../about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">MySQL-1</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Neary Li</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">September 10, 2021&nbsp;&nbsp;21:16:07</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="../../../../categories/MySQL/">MySQL</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><p>下载建议：利用压缩包安装，exe 文件安装会存在卸载不干净问题。</p>
+<h3 id="1、数据库类型"><a href="#1、数据库类型" class="headerlink" title="1、数据库类型"></a>1、数据库类型</h3><ul>
+<li><p>关系型数据库: (SQL)</p>
+<ul>
+<li>MySQL ,Oracle, Sql Server, DB2, SQLite</li>
+<li>通过表和表之间，行和列之间的关系进行数据的存储</li>
+</ul>
+</li>
+<li><p>非关系型数据库:(NoSQL) not only</p>
+<ul>
+<li>Redis, MongoDB</li>
+<li>对象存储，通过对象自身的属性来决定</li>
+</ul>
+</li>
+<li><p>DBMS：数据库管理软件</p>
+</li>
+</ul>
+<h3 id="2、安装"><a href="#2、安装" class="headerlink" title="2、安装"></a>2、安装</h3><ol>
+<li>解压</li>
+<li>配置环境变量<ul>
+<li>path 目录下的 bin 路径</li>
+</ul>
+</li>
+<li>新建 mysql 配置文件*.ini</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[mysqld]</span></span><br><span class="line"><span class="attr">basedir</span>=D:\mysql\</span><br><span class="line"><span class="comment"># data文件夹不用自己创建，配置好后自动生成</span></span><br><span class="line"><span class="attr">datadir</span>=D:\mysql\data</span><br><span class="line"><span class="attr">port</span>=<span class="number">3306</span></span><br><span class="line"><span class="comment"># 设置空密码登录</span></span><br><span class="line">skip-grant-tables</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>启动管理员模式下的 CMD，并切换至 mysql 的 bin 目录下</li>
+<li>输入命令<code>mysqld -install</code></li>
+<li>启动 MySQL :<code>net start mysql</code></li>
+<li>再输入<code>mysqld --initialize-insecure --user=mysql</code>初始化数据文件</li>
+<li>然后再次启动 mysql,输入命令<code>mysql -u root -p</code>进入 mysql 管理界面（密码可为空）</li>
+<li>进入界面后更改 root 密码</li>
+</ol>
+<p><code>update mysql.user set authentication_string=password(&#39;123456&#39;) where user=&#39;root&#39; and Host=&#39;localhost&#39;;</code></p>
+<ol start="9">
+<li>最后输入<code>flush privileges;</code>刷新权限</li>
+<li>修改 my.ini 文件 注释最后一句 ski-grant-tables</li>
+<li>重启 mysql 即可正常使用</li>
+</ol>
+<p><code>net stop mysql</code></p>
+<p><code>net start mysql</code></p>
+<ol start="12">
+<li>链接测试<code>mysql -u root -p123456</code></li>
+</ol>
+<h3 id="3、字段属性"><a href="#3、字段属性" class="headerlink" title="3、字段属性"></a>3、字段属性</h3><ol>
+<li>Unsigned:<ul>
+<li>无符号整数</li>
+<li>声明该列不能为负数</li>
+</ul>
+</li>
+<li>zerofill:<ul>
+<li>0 填充的</li>
+<li>不足的位数，用 0 来填充</li>
+</ul>
+</li>
+<li>自增：<ul>
+<li>自动再上一条记录的基础上+1</li>
+<li>通常用来设计唯一的主键</li>
+</ul>
+</li>
+<li>非空</li>
+<li>默认</li>
+</ol>
+<p>扩展：阿里巴巴规范必须含有的列</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 每一个表必须存在如下五个字段</span></span><br><span class="line"><span class="comment">id 主键</span></span><br><span class="line"><span class="comment">`version`  乐观锁</span></span><br><span class="line"><span class="comment">is_delete  伪删除</span></span><br><span class="line"><span class="comment">gmt_create 创建时间</span></span><br><span class="line"><span class="comment">gmt_update 修改时间</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/10/MySQL-1/image-20210913154538152.png" alt="image-20210913154538152"></p>
+<p>显示表的结构<code>DESC student</code></p>
+<h3 id="4、数据表的类型"><a href="#4、数据表的类型" class="headerlink" title="4、数据表的类型"></a>4、数据表的类型</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 关于数据库引擎</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">INNODB 默认使用</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">MYISAM 早年使用</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>MYISAM</th>
+<th>INNODB</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>事物支持</td>
+<td>N</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>数据行锁定</td>
+<td>N</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>外键约束</td>
+<td>N</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>全文索引</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<td>表空间大小</td>
+<td>较小</td>
+<td>较大，约为 2 倍</td>
+</tr>
+</tbody></table>
+<p>常规使用操作：</p>
+<ul>
+<li>MYISAM 节约空间，速度较快</li>
+<li>INNODB 安全性高，事务的处理，多表多用户操作</li>
+</ul>
+<p>####</p>
+<h3 id="5、操作数据库"><a href="#5、操作数据库" class="headerlink" title="5、操作数据库"></a>5、<a href>操作数据库</a></h3><p><img src="/2021/09/10/MySQL-1/elegantbook-cn_4.png" alt="elegantbook-cn_4"></p>
+<p><img src="/2021/09/10/MySQL-1/elegantbook-cn_5.png" alt="elegantbook-cn_5"></p>
+<p><img src="/2021/09/10/MySQL-1/elegantbook-cn_6.png" alt="elegantbook-cn_6"></p>
+<p><img src="/2021/09/10/MySQL-1/elegantbook-cn_7.png" alt="elegantbook-cn_7"></p>
+<p><img src="/2021/09/10/MySQL-1/elegantbook-cn_8.png" alt="elegantbook-cn_8"></p>
+<p><img src="/2021/09/10/MySQL-1/elegantbook-cn_9.png" alt="elegantbook-cn_9"></p>
+<p><img src="/2021/09/10/MySQL-1/elegantbook-cn_10-16315165504751.png" alt="elegantbook-cn_10"></p>
+<h4 id="5-1-补充"><a href="#5-1-补充" class="headerlink" title="5.1 补充"></a>5.1 补充</h4><p>１、修改数据表名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 原表名 <span class="keyword">RENAME</span> <span class="keyword">AS</span>　新表名</span><br></pre></td></tr></table></figure>
+
+<p>２、添加表的字段</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 表名 <span class="keyword">ADD</span> 字段名 字段列属性</span><br></pre></td></tr></table></figure>
+
+<p>3、修改表的字段</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 修改约束</span></span><br><span class="line">ALERT TABLE 表名 MODIFY 字段名 列属性[]</span><br><span class="line">ALERT TABLE　teacher　MODIFY　age VARCHAR(11)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 字段重命名</span></span><br><span class="line">ALERT TABLE 表名 GHANGE 旧名字 新名字 列属性[]</span><br><span class="line">ALERT TABLE　teacher　GHANGE　age age1 INT(1)</span><br></pre></td></tr></table></figure>
+
+<p>4、删除表的字段</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 表明 <span class="keyword">DROP</span> 字段名</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> teacher <span class="keyword">DROP</span> age1</span><br></pre></td></tr></table></figure>
+
+<p>5、<img src="/2021/09/10/MySQL-1/image-20210913211459177.png" alt="image-20210913211459177"></p>
+<p><img src="/2021/09/10/MySQL-1/image-20210913212411103.png" alt="image-20210913212411103"></p>
+<h4 id="5-2-指定查询字段"><a href="#5-2-指定查询字段" class="headerlink" title="*5.2 指定查询字段"></a>*5.2 指定查询字段</h4><p><img src="/2021/09/10/MySQL-1/image-20210913213452788.png" alt="image-20210913213452788"></p>
+<p><img src="/2021/09/10/MySQL-1/image-20210913214038280.png" alt="image-20210913214038280"></p>
+<p><img src="/2021/09/10/MySQL-1/image-20210913214350329.png" alt="image-20210913214350329"></p>
+<h4 id="5-3-where-条件字句"><a href="#5-3-where-条件字句" class="headerlink" title="*5.3 where 条件字句"></a>*5.3 where 条件字句</h4><p><img src="/2021/09/10/MySQL-1/image-20210913215304937.png" alt="image-20210913215304937"></p>
+<p><img src="/2021/09/10/MySQL-1/image-20210913215411337.png" alt="image-20210913215411337"></p>
+<p><img src="/2021/09/10/MySQL-1/image-20210913215832771.png" alt="image-20210913215832771"></p>
+<p><img src="/2021/09/10/MySQL-1/image-20210913220815488.png" alt="image-20210913220815488"></p>
+<h4 id="5-4-联表查询"><a href="#5-4-联表查询" class="headerlink" title="*5.4 联表查询"></a>*5.4 <a href>联表查询</a></h4><p><img src="/2021/09/10/MySQL-1/20200830092241986.png" alt></p>
+<h4 id="5-5-自连接"><a href="#5-5-自连接" class="headerlink" title="*5.5 自连接"></a>*5.5 <a href>自连接</a></h4><h4 id="5-6-分页和排序"><a href="#5-6-分页和排序" class="headerlink" title="5.6 分页和排序"></a>5.6 分页和排序</h4><p><img src="/2021/09/10/MySQL-1/image-20210914113216882.png" alt="image-20210914113216882"></p>
+<p><img src="/2021/09/10/MySQL-1/image-20210914113507549.png" alt="image-20210914113507549"></p>
+<h4 id="5-7-子查询"><a href="#5-7-子查询" class="headerlink" title="5.7 子查询"></a>5.7 子查询</h4><h4 id="5-8-分组和过滤"><a href="#5-8-分组和过滤" class="headerlink" title="5.8 分组和过滤"></a>5.8 分组和过滤</h4><p><img src="/2021/09/10/MySQL-1/image-20210914152515255.png" alt="image-20210914152515255"></p>
+<h4 id="5-9-Select-总结"><a href="#5-9-Select-总结" class="headerlink" title="5.9 Select 总结"></a>5.9 Select 总结</h4><p><img src="/2021/09/10/MySQL-1/image-20210914153615240.png" alt="image-20210914153615240"></p>
+<h3 id="6、MySQL-函数"><a href="#6、MySQL-函数" class="headerlink" title="6、MySQL 函数"></a>6、MySQL 函数</h3><h4 id="6-1-常用函数"><a href="#6-1-常用函数" class="headerlink" title="6.1 常用函数"></a>6.1 常用函数</h4><h4 id="6-2-聚合函数"><a href="#6-2-聚合函数" class="headerlink" title="6.2 聚合函数"></a>6.2 聚合函数</h4>
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Neary Li</span>
+                    </p>
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="../../../../tags/Java/"># Java</a>
+                    
+                        <a href="../../../../tags/MySQL/"># MySQL</a>
+                    
+                        <a href="../../../../tags/JDBC/"># JDBC</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="../../18/MySQL-2/">MySQL-2</a>
+            
+            
+            <a class="next" rel="next" href="../../07/Java-Web-2/">Java-Web-2</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+
+
+    <div class="copyright">
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>    <span id="busuanzi_container_site_pv">
+                    总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+            <span id="busuanzi_container_site_uv">
+                    总访客数<span id="busuanzi_value_site_uv"></span>人
+            </span> 
+            <br>
+        <span>copyright &copy 2021 Neary Li. All rights reserved.</span>
+    </div>
+    
+</footer>
+
+    </div>
+</body>
+</html>

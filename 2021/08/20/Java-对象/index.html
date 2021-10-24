@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Neary Li">
+
+
+
+
+    <meta name="keywords" content="IT">
+
+
+<title>Java_对象 | Neary-Li&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="../../../../favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="../../../../css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="../../../../js/script.js"></script>
+    
+    <script src="../../../../js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Neary&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="../../../../archives">Posts</a>
+                
+                    <a class="menu-item" href="../../../../category">Categories</a>
+                
+                    <a class="menu-item" href="../../../../tag">Tags</a>
+                
+                    <a class="menu-item" href="../../../../about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Neary&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="../../../../archives">Posts</a>
+                
+                    <a class="menu-item" href="../../../../category">Categories</a>
+                
+                    <a class="menu-item" href="../../../../tag">Tags</a>
+                
+                    <a class="menu-item" href="../../../../about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Java_对象</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Neary Li</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">August 20, 2021&nbsp;&nbsp;9:17:54</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="../../../../categories/Java/">Java</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><ol>
+<li><p>面向对象 &amp; 面向过程</p>
+<ul>
+<li>面向过程思想<ul>
+<li>步骤清晰简单，第一步做什么，第二步做什么……</li>
+<li>面向过程适合处理一些较为简单的问题</li>
+</ul>
+</li>
+<li>面向对象思想<ul>
+<li>物以类聚，分类的思维模式，思考问题首先会解决问题需要哪些分类，然后对这些分类单独进行思考，最后才对某个分类下的细节进行面想过程的思索。</li>
+<li>面向对象适合处理复杂的问题，适合处理需要多人协作的问题。</li>
+</ul>
+</li>
+</ul>
+<p><strong>对于描述复杂的事物，为了从宏观上把握，从整体上合理分析，我们需要使用面想对象的思路来分析整个系统，但是，具体到微观操作，仍然需要面向过程的思路去处理。</strong></p>
+</li>
+<li><p>面向对象</p>
+<ul>
+<li>面向对象编程（Object-Oriented Programming, OOP）</li>
+<li>面向对象编程的本质：以类的方式组织代码，以对象的组织(封装)数据。</li>
+<li>抽象 ： 简单理解为抽取类似(像)的东西</li>
+<li>三大特性<ul>
+<li>封装</li>
+<li>继承</li>
+<li>多态</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>方法</p>
+<ul>
+<li>方法的定义<ul>
+<li>修饰符<ul>
+<li>public: 对所有类可见，使用对象: 类、接口、变量、方法</li>
+<li>private: 在同一类内可见。使用对象：变量、方法</li>
+<li>default: (即默认，什么都不写) 在同一包内可见，不使用任何修饰符。</li>
+<li>protected: 对同一包的所有子类可见。使用对象：变量、方法。</li>
+</ul>
+</li>
+<li>返回类型</li>
+<li>break 和 return 的区别<ul>
+<li>break 跳出 switch，结束循环</li>
+<li>return 结束方法，并输出规定类型的值</li>
+</ul>
+</li>
+<li>方法名</li>
+<li>参数列表</li>
+<li>异常抛出</li>
+</ul>
+</li>
+<li>方法的调用<ul>
+<li>静态方法</li>
+<li>非静态方法</li>
+<li>形参和实参</li>
+<li>值传递和应用传递</li>
+<li>this 关键字</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>类与对象的关系</p>
+<ul>
+<li>类是一种抽象的数据类型，他是对某一类事物整体描述，但是并不代表某一个具体的事物。<ul>
+<li>动物、植物、手机、电脑…</li>
+<li>Person 类、Pet 类、Car 类，这些类都是用来描述/定义某一类具体事务应该具备的特点和行为。</li>
+</ul>
+</li>
+<li>对象是抽象概念的具体实例<ul>
+<li>张三就是人的一个具体实例张三家里的旺财就是狗的一个具体实例。</li>
+<li>能够体现出特点，展现出功能的是具体的实例，而不是一个抽象的概念。</li>
+</ul>
+</li>
+<li>一个类中只能包含属性和方法。</li>
+</ul>
+</li>
+<li><p>创建与初始化对象</p>
+<ul>
+<li>使用<strong>new</strong>关键字创建对象</li>
+<li>使用<strong>new</strong>关键字创建的时候，除了分配内存空间之外，还会给 <strong>创建好的对象</strong> 进行默认的初始化 以及 <strong>对类中构造器的调用。</strong></li>
+<li>类中的构造器也成为构造方法，是在进行创建的时候必须要调用的，并且构造器有以下两个特点：<ul>
+<li>必须和类的名字相同</li>
+<li>必须没有返回类型，也不能写 void</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>构造器</p>
+<p><em>idea 中创建构造器 的快捷方式为：<code>Alt + insert</code></em></p>
+<ul>
+<li>特点<ul>
+<li>和类名相同</li>
+<li>没有返回值</li>
+</ul>
+</li>
+<li>作用<ul>
+<li>new 本质在调用构造方法</li>
+<li>初始化对象的值</li>
+</ul>
+</li>
+<li>注意点<ul>
+<li>定义有参构造之后，如果想使用无参构造，必须显示的定义一个无参的构造。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>创建对象内存分析<br><img src="/2021/08/20/Java-%E5%AF%B9%E8%B1%A1/image-20210816164534461.png" alt="image-20210816164534461"><br><code>Application.java</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Pet dog = <span class="keyword">new</span> Pet();</span><br><span class="line">        dog.name = <span class="string">"旺财"</span>;</span><br><span class="line">        dog.age = <span class="number">2</span>;</span><br><span class="line">        dog.shout();</span><br><span class="line"></span><br><span class="line">        System.out.println(dog.name)；</span><br><span class="line">        System.out.println(dog.age)；</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>Pet.java</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Pet</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 无参构造</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">shout</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"叫了一声"</span>)；</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Neary Li</span>
+                    </p>
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="../../../../tags/Java/"># Java</a>
+                    
+                        <a href="../../../../tags/%E5%AF%B9%E8%B1%A1/"># 对象</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="../Java-%E5%B0%81%E8%A3%85%E3%80%81%E7%BB%A7%E6%89%BF%E3%80%81%E5%A4%9A%E6%80%81/">Java_封装、继承、多态</a>
+            
+            
+            <a class="next" rel="next" href="../Java-Base/">Java_Base</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+
+
+    <div class="copyright">
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>    <span id="busuanzi_container_site_pv">
+                    总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+            <span id="busuanzi_container_site_uv">
+                    总访客数<span id="busuanzi_value_site_uv"></span>人
+            </span> 
+            <br>
+        <span>copyright &copy 2021 Neary Li. All rights reserved.</span>
+    </div>
+    
+</footer>
+
+    </div>
+</body>
+</html>
