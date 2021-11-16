@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Neary Li">
+
+
+
+
+    <meta name="keywords" content="IT">
+
+
+<title>springcloud03 | Neary-Li&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="../../../../favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="../../../../css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="../../../../js/script.js"></script>
+    
+    <script src="../../../../js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Neary&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="../../../../archives">Posts</a>
+                
+                    <a class="menu-item" href="../../../../category">Categories</a>
+                
+                    <a class="menu-item" href="../../../../tag">Tags</a>
+                
+                    <a class="menu-item" href="../../../../about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Neary&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="../../../../archives">Posts</a>
+                
+                    <a class="menu-item" href="../../../../category">Categories</a>
+                
+                    <a class="menu-item" href="../../../../tag">Tags</a>
+                
+                    <a class="menu-item" href="../../../../about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">springcloud03</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Neary Li</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">November 16, 2021&nbsp;&nbsp;23:32:09</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="../../../../categories/SpringCloud/">SpringCloud</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="SpringCloud-微服务架构学习前言"><a href="#SpringCloud-微服务架构学习前言" class="headerlink" title="SpringCloud 微服务架构学习前言"></a>SpringCloud 微服务架构学习前言</h1><h2 id="1、学习前言"><a href="#1、学习前言" class="headerlink" title="1、学习前言"></a>1、学习前言</h2><h3 id="1-1-学习前提"><a href="#1-1-学习前提" class="headerlink" title="1.1 学习前提"></a>1.1 学习前提</h3><ul>
+<li><p>熟练使用 SpringBoot 微服务快速开发框架</p>
+</li>
+<li><p>了解过 Dubbo + Zookeeper 分布式基础</p>
+</li>
+<li><p>电脑配置内存不低于 8G</p>
+</li>
+</ul>
+<h3 id="1-2-文章大纲"><a href="#1-2-文章大纲" class="headerlink" title="1.2 文章大纲"></a>1.2 文章大纲</h3><blockquote>
+<p>Spring Cloud 五大组件</p>
+</blockquote>
+<ul>
+<li><p>服务注册与发现——Netflix Eureka</p>
+</li>
+<li><p>负载均衡：</p>
+<ul>
+<li>客户端负载均衡——Netflix Ribbon</li>
+<li>服务端负载均衡：——Feign(其也是依赖于 Ribbon，只是将调用方式 RestTemplete 更改成 Service 接口)</li>
+</ul>
+</li>
+<li><p>断路器——Netflix Hystrix</p>
+</li>
+<li><p>服务网关——Netflix Zuul</p>
+</li>
+<li><p>分布式配置——Spring Cloud Config</p>
+</li>
+</ul>
+<h3 id="1-3-常见面试题"><a href="#1-3-常见面试题" class="headerlink" title="1.3 常见面试题"></a>1.3 常见面试题</h3><p>1.1 什么是微服务？</p>
+<p>1.2 微服务之间是如何独立通讯的？</p>
+<p>1.3 SpringCloud 和 Dubbo 有那些区别？</p>
+<p>1.4 SpringBoot 和 SpringCloud，请谈谈你对他们的理解</p>
+<p>1.5 什么是服务熔断？什么是服务降级？</p>
+<p>1.6 微服务的优缺点分别是什么？说下你在项目开发中遇到的坑</p>
+<p>1.7 你所知道的微服务技术栈有哪些？列举一二</p>
+<p>1.8 Eureka 和 Zookeeper 都可以提供服务注册与发现的功能，请说说两者的区别</p>
+<h2 id="2、微服务概述"><a href="#2、微服务概述" class="headerlink" title="2、微服务概述"></a>2、微服务概述</h2><h3 id="2-1-什么是微服务？"><a href="#2-1-什么是微服务？" class="headerlink" title="2.1 什么是微服务？"></a>2.1 什么是微服务？</h3><blockquote>
+<p>什么是微服务？</p>
+</blockquote>
+<p>微服务(Microservice Architecture) 是近几年流行的一种架构思想，关于它的概念很难一言以蔽之。</p>
+<p>究竟什么是微服务呢？我们在此引用 ThoughtWorks 公司的首席科学家 Martin Fowler 于 2014 年提出的一段话：</p>
+<p>原文：<a href="https://martinfowler.com/articles/microservices.html" target="_blank" rel="noopener">https://martinfowler.com/articles/microservices.html</a></p>
+<p>汉化：<a href="https://www.cnblogs.com/liuning8023/p/4493156.html" target="_blank" rel="noopener">https://www.cnblogs.com/liuning8023/p/4493156.html</a></p>
+<ul>
+<li>就目前而言，对于微服务，业界并没有一个统一的，标准的定义。</li>
+<li>但通常而言，微服务架构是一种架构模式，或者说是一种架构风格，它体长将单一的应用程序划分成一组小的服务，每个服务运行在其独立的自己的进程内，服务之间互相协调，互相配置，为用户提供最终价值，服务之间采用轻量级的通信机制(HTTP)互相沟通，每个服务都围绕着具体的业务进行构建，并且能狗被独立的部署到生产环境中，另外，应尽量避免统一的，集中式的服务管理机制，对具体的一个服务而言，应该根据业务上下文，选择合适的语言，工具(Maven)对其进行构建，可以有一个非常轻量级的集中式管理来协调这些服务，可以使用不同的语言来编写服务，也可以使用不同的数据存储。</li>
+</ul>
+<blockquote>
+<p>再来从技术维度角度理解下：</p>
+</blockquote>
+<ul>
+<li>微服务化的核心就是将传统的一站式应用，根据业务拆分成一个一个的服务，彻底地去耦合，每一个微服务提供单个业务功能的服务，一个服务做一件事情，从技术角度看就是一种小而独立的处理过程，类似进程的概念，能够自行单独启动或销毁，拥有自己独立的数据库。</li>
+</ul>
+<h3 id="2-2-微服务与微服务架构"><a href="#2-2-微服务与微服务架构" class="headerlink" title="2.2 微服务与微服务架构"></a>2.2 微服务与微服务架构</h3><blockquote>
+<p>微服务</p>
+</blockquote>
+<p>强调的是服务的大小，它关注的是某一个点，是具体解决某一个问题/提供落地对应服务的一个服务应用，狭义的看，可以看作是 IDEA 中的一个个微服务工程，或者 Moudel。IDEA 工具里面使用 Maven 开发的一个个独立的小 Moudel，它具体是使用 SpringBoot 开发的一个小模块，专业的事情交给专业的模块来做，一个模块就做着一件事情。强调的是一个个的个体，每个个体完成一个具体的任务或者功能。</p>
+<blockquote>
+<p>微服务架构</p>
+</blockquote>
+<p>一种新的架构形式，Martin Fowler 于 2014 年提出。</p>
+<p>微服务架构是一种架构模式，它体长将单一应用程序划分成一组小的服务，服务之间相互协调，互相配合，为用户提供最终价值。每个服务运行在其独立的进程中，服务与服务之间采用轻量级的通信机制<strong>(如 HTTP)互相协作，每个服务都围绕着具体的业务进行构建，并且能够被独立的部署到生产环境中，另外，应尽量避免统一的，集中式的服务管理机制，对具体的一个服务而言，应根据业务上下文，选择合适的语言、工具(如 Maven)</strong>对其进行构建。</p>
+<h3 id="2-3-微服务优缺点"><a href="#2-3-微服务优缺点" class="headerlink" title="2.3 微服务优缺点"></a>2.3 微服务优缺点</h3><blockquote>
+<p>优点</p>
+</blockquote>
+<p>单一职责原则；</p>
+<ul>
+<li><p>每个服务足够内聚，足够小，代码容易理解，这样能聚焦一个指定的业务功能或业务需求；</p>
+</li>
+<li><p>开发简单，开发效率高，一个服务可能就是专一的只干一件事；</p>
+</li>
+<li><p>微服务能够被小团队单独开发，这个团队只需 2-5 个开发人员组成；</p>
+</li>
+<li><p>微服务是松耦合的，是有功能意义的服务，无论是在开发阶段或部署阶段都是独立的；</p>
+</li>
+<li><p>微服务能使用不同的语言开发；</p>
+</li>
+<li><p>易于和第三方集成，微服务允许容易且灵活的方式集成自动部署，通过持续集成工具，如 jenkins，Hudson，bamboo；</p>
+</li>
+<li><p>微服务易于被一个开发人员理解，修改和维护，这样小团队能够更关注自己的工作成果，无需通过合作才能体现价值；</p>
+</li>
+<li><p>微服务允许利用和融合最新技术；</p>
+</li>
+<li><p><strong>微服务只是业务逻辑的代码，不会和 HTML，CSS，或其他的界面混合;</strong></p>
+</li>
+<li><p><strong>每个微服务都有自己的存储能力，可以有自己的数据库，也可以有统一的数据库；</strong></p>
+</li>
+</ul>
+<blockquote>
+<p>缺点</p>
+</blockquote>
+<ul>
+<li>开发人员要处理分布式系统的复杂性；</li>
+<li>多服务运维难度，随着服务的增加，运维的压力也在增大；</li>
+<li>系统部署依赖问题；</li>
+<li>服务间通信成本问题；</li>
+<li>数据一致性问题；</li>
+<li>系统集成测试问题；</li>
+<li>性能和监控问题；</li>
+</ul>
+<h3 id="2-4-微服务技术栈有那些？"><a href="#2-4-微服务技术栈有那些？" class="headerlink" title="2.4 微服务技术栈有那些？"></a>2.4 微服务技术栈有那些？</h3><table>
+<thead>
+<tr>
+<th><strong>微服务技术条目</strong></th>
+<th><strong>落地技术</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>服务开发</td>
+<td>SpringBoot、Spring、SpringMVC 等</td>
+</tr>
+<tr>
+<td>服务配置与管理</td>
+<td>Netfix 公司的 Archaius、阿里的 Diamond 等</td>
+</tr>
+<tr>
+<td>服务注册与发现</td>
+<td>Eureka、Consul、Zookeeper 等</td>
+</tr>
+<tr>
+<td>服务调用</td>
+<td>Rest、PRC、gRPC</td>
+</tr>
+<tr>
+<td>服务熔断器</td>
+<td>Hystrix、Envoy 等</td>
+</tr>
+<tr>
+<td>负载均衡</td>
+<td>Ribbon、Nginx 等</td>
+</tr>
+<tr>
+<td>服务接口调用(客户端调用服务的简化工具)</td>
+<td>Fegin 等</td>
+</tr>
+<tr>
+<td>消息队列</td>
+<td>Kafka、RabbitMQ、ActiveMQ 等</td>
+</tr>
+<tr>
+<td>服务配置中心管理</td>
+<td>SpringCloudConfig、Chef 等</td>
+</tr>
+<tr>
+<td>服务路由(API 网关)</td>
+<td>Zuul 等</td>
+</tr>
+<tr>
+<td>服务监控</td>
+<td>Zabbix、Nagios、Metrics、Specatator 等</td>
+</tr>
+<tr>
+<td>全链路追踪</td>
+<td>Zipkin、Brave、Dapper 等</td>
+</tr>
+<tr>
+<td>数据流操作开发包</td>
+<td>SpringCloud Stream(封装与 Redis，Rabbit，Kafka 等发送接收消息)</td>
+</tr>
+<tr>
+<td>时间消息总栈</td>
+<td>SpringCloud Bus</td>
+</tr>
+<tr>
+<td>服务部署</td>
+<td>Docker、OpenStack、Kubernetes 等</td>
+</tr>
+</tbody></table>
+<h3 id="2-5-为什么选择-SpringCloud-作为微服务架构"><a href="#2-5-为什么选择-SpringCloud-作为微服务架构" class="headerlink" title="2.5 为什么选择 SpringCloud 作为微服务架构"></a>2.5 为什么选择 SpringCloud 作为微服务架构</h3><ol>
+<li><p>选型依据</p>
+<ul>
+<li>整体解决方案和框架成熟度</li>
+<li>社区热度</li>
+<li>可维护性</li>
+<li>学习曲线</li>
+</ul>
+</li>
+<li><p>当前各大 IT 公司用的微服务架构有那些？</p>
+<ul>
+<li><p>阿里：dubbo+HFS</p>
+</li>
+<li><p>京东：JFS</p>
+</li>
+<li><p>新浪：Motan</p>
+</li>
+<li><p>当当网：DubboX</p>
+<p>…</p>
+</li>
+</ul>
+</li>
+<li><p>各微服务框架对比</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><strong>功能点/服务框架</strong></th>
+<th>Netflix/SpringCloud</th>
+<th>Motan</th>
+<th>gRPC</th>
+<th>Thri t</th>
+<th>Dubbo/DubboX</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>功能定位</td>
+<td>完整的微服务框架</td>
+<td>RPC 框架，但整合了 ZK 或 Consul，实现集群环境的基本服务注册发现</td>
+<td>RPC 框架</td>
+<td>RPC 框架</td>
+<td>服务框架</td>
+</tr>
+<tr>
+<td>支持 Rest</td>
+<td>是，Ribbon 支持多种可拔插的序列号选择</td>
+<td>否</td>
+<td>否</td>
+<td>否</td>
+<td>否</td>
+</tr>
+<tr>
+<td>支持 RPC</td>
+<td>否</td>
+<td>是(Hession2)</td>
+<td>是</td>
+<td>是</td>
+<td>是</td>
+</tr>
+<tr>
+<td>支持多语言</td>
+<td>是(Rest 形式)</td>
+<td>否</td>
+<td>是</td>
+<td>是</td>
+<td>否</td>
+</tr>
+<tr>
+<td>负载均衡</td>
+<td>是(服务端 zuul+客户端 Ribbon)，zuul-服务，动态路由，云端负载均衡 Eureka（针对中间层服务器）</td>
+<td>是(客户端)</td>
+<td>否</td>
+<td>否</td>
+<td>是(客户端)</td>
+</tr>
+<tr>
+<td>配置服务</td>
+<td>Netfix Archaius，Spring Cloud Config Server 集中配置</td>
+<td>是(Zookeeper 提供)</td>
+<td>否</td>
+<td>否</td>
+<td>否</td>
+</tr>
+<tr>
+<td>服务调用链监控</td>
+<td>是(zuul)，zuul 提供边缘服务，API 网关</td>
+<td>否</td>
+<td>否</td>
+<td>否</td>
+<td>否</td>
+</tr>
+<tr>
+<td>高可用/容错</td>
+<td>是(服务端 Hystrix+客户端 Ribbon)</td>
+<td>是(客户端)</td>
+<td>否</td>
+<td>否</td>
+<td>是(客户端)</td>
+</tr>
+<tr>
+<td>典型应用案例</td>
+<td>Netflix</td>
+<td>Sina</td>
+<td>Google</td>
+<td>Facebook</td>
+<td></td>
+</tr>
+<tr>
+<td>社区活跃程度</td>
+<td>高</td>
+<td>一般</td>
+<td>高</td>
+<td>一般</td>
+<td>2017 年后重新开始维护，之前中断了 5 年</td>
+</tr>
+<tr>
+<td>学习难度</td>
+<td>中等</td>
+<td>低</td>
+<td>高</td>
+<td>高</td>
+<td>低</td>
+</tr>
+<tr>
+<td>文档丰富程度</td>
+<td>高</td>
+<td>一般</td>
+<td>一般</td>
+<td>一般</td>
+<td>高</td>
+</tr>
+<tr>
+<td>其他</td>
+<td>Spring Cloud Bus 为我们的应用程序带来了更多管理端点</td>
+<td>支持降级</td>
+<td>Netflix 内部在开发集成 gRPC</td>
+<td>IDL 定义</td>
+<td>实践的公司比较多</td>
+</tr>
+</tbody></table>
+<h2 id="3-SpringCloud-入门概述"><a href="#3-SpringCloud-入门概述" class="headerlink" title="3. SpringCloud 入门概述"></a>3. SpringCloud 入门概述</h2><h3 id="3-1-SpringCloud-是什么？"><a href="#3-1-SpringCloud-是什么？" class="headerlink" title="3.1 SpringCloud 是什么？"></a>3.1 SpringCloud 是什么？</h3><p>Spring 官网：<a href="https://spring.io/" target="_blank" rel="noopener">https://spring.io/</a></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9zczEuYmRzdGF0aWMuY29tLzcwY0Z1WFNoX1ExWW54R2twb1dLMUhGNmhoeS9pdC91PTM1NzgwMTc3ODAsMTIxODQyMDAyOSZmbT0yNiZncD0wLmpwZw?x-oss-process=image/format,png" alt="img"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9zczIuYmRzdGF0aWMuY29tLzcwY0Z2blNoX1ExWW54R2twb1dLMUhGNmhoeS9pdC91PTE2Mzc3ODY4OTcsNzQ1MTM1MjUxJmZtPTI2JmdwPTAuanBn?x-oss-process=image/format,png" alt="img"></p>
+<h3 id="3-2-SpringCloud-和-SpringBoot-的关系"><a href="#3-2-SpringCloud-和-SpringBoot-的关系" class="headerlink" title="3.2 SpringCloud 和 SpringBoot 的关系"></a>3.2 SpringCloud 和 SpringBoot 的关系</h3><ul>
+<li>SpringBoot 专注于开苏方便的开发单个个体微服务；</li>
+<li>SpringCloud 是关注全局的微服务协调整理治理框架，它将 SpringBoot 开发的一个个单体微服务，整合并管理起来，为各个微服务之间提供：配置管理、服务发现、断路器、路由、为代理、事件总栈、全局锁、决策竞选、分布式会话等等集成服务；</li>
+<li>SpringBoot 可以离开 SpringCloud 独立使用，开发项目，但 SpringCloud 离不开 SpringBoot，属于依赖关系；</li>
+<li>SpringBoot 专注于快速、方便的开发单个个体微服务，SpringCloud 关注全局的服务治理框架；</li>
+</ul>
+<h3 id="3-3-Dubbo-和-SpringCloud-技术选型"><a href="#3-3-Dubbo-和-SpringCloud-技术选型" class="headerlink" title="3.3 Dubbo 和 SpringCloud 技术选型"></a>3.3 Dubbo 和 SpringCloud 技术选型</h3><ol>
+<li><p>分布式+服务治理 Dubbo<br>目前成熟的互联网架构，应用服务化拆分 + 消息中间件</p>
+</li>
+<li><p>Dubbo 和 SpringCloud 对比<br>可以看一下社区活跃度：</p>
+</li>
+</ol>
+<p><a href="https://github.com/dubbo" target="_blank" rel="noopener">https://github.com/dubbo</a></p>
+<p><a href="https://github.com/spring-cloud" target="_blank" rel="noopener">https://github.com/spring-cloud</a><br><strong>对比结果：</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Dubbo</th>
+<th>SpringCloud</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>服务注册中心</td>
+<td>Zookeeper</td>
+<td>Spring Cloud Netfilx Eureka</td>
+</tr>
+<tr>
+<td>服务调用方式</td>
+<td><strong>RPC</strong></td>
+<td><strong>REST API</strong></td>
+</tr>
+<tr>
+<td>服务监控</td>
+<td>Dubbo-monitor</td>
+<td>Spring Boot Admin</td>
+</tr>
+<tr>
+<td>断路器</td>
+<td>不完善</td>
+<td>Spring Cloud Netfilx Hystrix</td>
+</tr>
+<tr>
+<td>服务网关</td>
+<td>无</td>
+<td>Spring Cloud Netfilx Zuul</td>
+</tr>
+<tr>
+<td>分布式配置</td>
+<td>无</td>
+<td>Spring Cloud Config</td>
+</tr>
+<tr>
+<td>服务跟踪</td>
+<td>无</td>
+<td>Spring Cloud Sleuth</td>
+</tr>
+<tr>
+<td>消息总栈</td>
+<td>无</td>
+<td>Spring Cloud Bus</td>
+</tr>
+<tr>
+<td>数据流</td>
+<td>无</td>
+<td>Spring Cloud Stream</td>
+</tr>
+<tr>
+<td>批量任务</td>
+<td>无</td>
+<td>Spring Cloud Task</td>
+</tr>
+</tbody></table>
+<p><strong>最大区别：Spring Cloud 抛弃了 Dubbo 的 RPC 通信，采用的是基于 HTTP 的 REST 方式</strong></p>
+<p>严格来说，这两种方式各有优劣。虽然从一定程度上来说，后者牺牲了服务调用的性能，但也避免了上面提到的原生 RPC 带来的问题。而且 REST 相比 RPC 更为灵活，服务提供方和调用方的依赖只依靠一纸契约，不存在代码级别的强依赖，这个优点在当下强调快速演化的微服务环境下，显得更加合适。</p>
+<h3 id="3-4-SpringCloud-能干嘛？"><a href="#3-4-SpringCloud-能干嘛？" class="headerlink" title="3.4 SpringCloud 能干嘛？"></a>3.4 SpringCloud 能干嘛？</h3><ul>
+<li>Distributed/versioned configuration 分布式/版本控制配置<ul>
+<li>Service registration and discovery 服务注册与发现</li>
+<li>Routing 路由</li>
+<li>Service-to-service calls 服务到服务的调用</li>
+<li>Load balancing 负载均衡配置</li>
+<li>Circuit Breakers 断路器</li>
+<li>Distributed messaging 分布式消息管理<br>…</li>
+</ul>
+</li>
+</ul>
+<p>自学参考书：</p>
+<ul>
+<li>SpringCloud Netflix 中文文档：<a href="https://springcloud.cc/spring-cloud-netflix.html" target="_blank" rel="noopener">https://springcloud.cc/spring-cloud-netflix.html</a></li>
+<li>SpringCloud 中文 API 文档(官方文档翻译版)：<a href="https://springcloud.cc/spring-cloud-dalston.html" target="_blank" rel="noopener">https://springcloud.cc/spring-cloud-dalston.html</a></li>
+<li>SpringCloud 中国社区：<a href="http://springcloud.cn/" target="_blank" rel="noopener">http://springcloud.cn/</a></li>
+<li>SpringCloud 中文网：<a href="https://springcloud.cc" target="_blank" rel="noopener">https://springcloud.cc</a></li>
+</ul>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Neary Li</span>
+                    </p>
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="../../../../tags/java/"># java</a>
+                    
+                        <a href="../../../../tags/SpringCloud/"># SpringCloud</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="../springcloud04/">springcloud04</a>
+            
+            
+            <a class="next" rel="next" href="../springcloud03/">springcloud03</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+
+
+    <div class="copyright">
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>    <span id="busuanzi_container_site_pv">
+                    总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+            <span id="busuanzi_container_site_uv">
+                    总访客数<span id="busuanzi_value_site_uv"></span>人
+            </span> 
+            <br>
+        <span>copyright &copy 2021 Neary Li. All rights reserved.</span>
+    </div>
+    
+</footer>
+
+    </div>
+</body>
+</html>
