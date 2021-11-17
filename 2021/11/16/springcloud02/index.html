@@ -382,9 +382,8 @@
 <blockquote>
 <p>测试当中的业务方法：</p>
 </blockquote>
-<p><a href="http://localhost:8001//dept/add" target="_blank" rel="noopener">http://localhost:8001//dept/add</a></p>
-<p><a href="http://localhost:8001/dept/get/1" target="_blank" rel="noopener">http://localhost:8001/dept/get/1</a></p>
-<p><a href="http://localhost:8001/dept/list" target="_blank" rel="noopener">http://localhost:8001/dept/list</a></p>
+<p><a href="http://localhost:8001/dept/get/1" target="_blank" rel="noopener">http://localhost:8001/dept/get/1</a><br><img src="/2021/11/16/springcloud02/Snipaste_2021-11-17_20-29-52.png" alt></p>
+<p><a href="http://localhost:8001/dept/list" target="_blank" rel="noopener">http://localhost:8001/dept/list</a><br><img src="/2021/11/16/springcloud02/Snipaste_2021-11-17_20-30-38.png" alt></p>
 <h3 id="4-6、创建服务消费者：pringcloud-provider-dept-80"><a href="#4-6、创建服务消费者：pringcloud-provider-dept-80" class="headerlink" title="4.6、创建服务消费者：pringcloud-provider-dept-80"></a>4.6、创建服务消费者：pringcloud-provider-dept-80</h3><p>代码的耦合度极大的降低，没有了 service 层，然后调用服务创建者的 controller 执行业务~</p>
 <blockquote>
 <p>pom.xml</p>
@@ -414,7 +413,7 @@
 <blockquote>
 <p>测试：</p>
 </blockquote>
-<p><a href="http://localhost/consumer/dept/list" target="_blank" rel="noopener">http://localhost/consumer/dept/list</a></p>
+<p><a href="http://localhost:8000/consumer/dept/list" target="_blank" rel="noopener">http://localhost:8000/consumer/dept/list</a><br><img src="/2021/11/16/springcloud02/Snipaste_2021-11-17_20-33-48.png" alt></p>
 
         </div>
 

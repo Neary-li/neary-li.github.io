@@ -214,9 +214,9 @@
 </ul>
 </li>
 </ul>
-<p><img src="https://img2020.cnblogs.com/blog/2126720/202102/2126720-20210205102049051-468233877.png" alt="img"></p>
+<p><img src="/2021/11/16/springcloud03/Snipaste_2021-11-17_20-35-16.png" alt="img"></p>
 <p>和 Dubbo 架构对比：</p>
-<p><img src="https://img2020.cnblogs.com/blog/2126720/202102/2126720-20210205102216400-221799791.png" alt="img"></p>
+<p><img src="/2021/11/16/springcloud03/Snipaste_2021-11-17_20-36-30.png" alt="img"></p>
 <ul>
 <li>Eureka 包含两个组件：<strong>Eureka Server</strong> 和 <strong>Eureka Client</strong>.</li>
 <li>Eureka Server 提供服务注册，各个节点启动后，回在 EurekaServer 中进行注册，这样 Eureka Server 中的服务注册表中将会储存所有课用服务节点的信息，服务节点的信息可以在界面中直观的看到.</li>
@@ -246,7 +246,7 @@
 <blockquote>
 <p>源码中 Eureka 的默认端口以及访问路径:</p>
 </blockquote>
-<p><img src="https://img2020.cnblogs.com/blog/2126720/202102/2126720-20210205110322169-824510223.png" alt="img"></p>
+<p><img src="/2021/11/16/springcloud03/Snipaste_2021-11-17_20-37-17.png" alt="img"></p>
 <blockquote>
 <p>测试连接： <a href="http://localhost:7001/" target="_blank" rel="noopener">http://localhost:7001/</a></p>
 </blockquote>
@@ -289,9 +289,9 @@
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># info配置</span></span><br><span class="line"><span class="attr">info:</span></span><br><span class="line">  <span class="comment"># 项目的名称</span></span><br><span class="line">  <span class="attr">app.name:</span> <span class="string">neary-springcloud</span></span><br><span class="line">  <span class="comment"># 公司的名称</span></span><br><span class="line">  <span class="attr">company.name:</span> <span class="string">NMUniversity</span></span><br></pre></td></tr></table></figure>
 
 <p>3、刷新监控页，点击进入</p>
-<p><img src="https://img2020.cnblogs.com/blog/2126720/202102/2126720-20210205142651304-1988653529.png" alt="img"></p>
+<p><img src="/2021/11/16/springcloud03/Snipaste_2021-11-17_20-39-25.png" alt="img"></p>
 <p>4、 跳转后的内容显示：</p>
-<p><img src="https://img2020.cnblogs.com/blog/2126720/202102/2126720-20210205142746829-2045403665.png" alt="img"></p>
+<p><img src="/2021/11/16/springcloud03/Snipaste_2021-11-17_20-40-38.png" alt="img"></p>
 <h3 id="5、EureKa-自我保护机制：好死不如赖活着"><a href="#5、EureKa-自我保护机制：好死不如赖活着" class="headerlink" title="5、EureKa 自我保护机制：好死不如赖活着"></a>5、EureKa 自我保护机制：好死不如赖活着</h3><p>一句话总结就是：某时刻某一个微服务不可用，eureka 不会立即清理，依旧会对该微服务的信息进行保存！</p>
 <ul>
 <li>默认情况下，当 eureka server 在一定时间内没有收到实例的心跳，便会把该实例从注册表中删除（默认是 90 秒），但是，如果短时间内丢失大量的实例心跳，便会触发 eureka server 的自我保护机制，比如在开发测试时，需要频繁地重启微服务实例，但是我们很少会把 eureka server 一起重启（因为在开发过程中不会修改 eureka 注册中心），当一分钟内收到的心跳数大量减少时，会触发该保护机制。可以在 eureka 管理界面看到 Renews threshold 和 Renews(last min)，当后者（最后一分钟收到的心跳数）小于前者（心跳阈值）的时候，触发保护机制，会出现红色的警告：<code>EMERGENCY!EUREKA MAY BE INCORRECTLY CLAIMING INSTANCES ARE UP WHEN THEY&#39;RE NOT.RENEWALS ARE LESSER THAN THRESHOLD AND HENCE THE INSTANCES ARE NOT BEGING EXPIRED JUST TO BE SAFE.</code>从警告中可以看到，eureka 认为虽然收不到实例的心跳，但它认为实例还是健康的，eureka 会保护这些实例，不会把它们从注册表中删掉。</li>
@@ -305,22 +305,22 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * DiscoveryClient 可以用来获取一些配置的信息，得到具体的微服务！</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Autowired</span></span><br><span class="line">   <span class="keyword">private</span> DiscoveryClient client;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 获取一些注册进来的微服务的信息~，</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@GetMapping</span>(<span class="string">"/dept/discovery"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> Object <span class="title">discovery</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="comment">// 获取微服务列表的清单</span></span><br><span class="line">       List&lt;String&gt; services = client.getServices();</span><br><span class="line">       System.out.println(<span class="string">"discovery=&gt;services:"</span> + services);</span><br><span class="line">       <span class="comment">// 得到一个具体的微服务信息,通过具体的微服务id，applicaioinName；</span></span><br><span class="line">       List&lt;ServiceInstance&gt; instances = client.getInstances(<span class="string">"SPRINGCLOUD-PROVIDER-DEPT-8001"</span>);</span><br><span class="line">       <span class="keyword">for</span> (ServiceInstance instance : instances) &#123;</span><br><span class="line">           System.out.println(</span><br><span class="line">                   instance.getHost() + <span class="string">"\t"</span> + <span class="comment">// 主机名称</span></span><br><span class="line">                           instance.getPort() + <span class="string">"\t"</span> + <span class="comment">// 端口号</span></span><br><span class="line">                           instance.getUri() + <span class="string">"\t"</span> + <span class="comment">// uri</span></span><br><span class="line">                           instance.getServiceId() <span class="comment">// 服务id</span></span><br><span class="line">           );</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">this</span>.client;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
 <p>在注册中心拿到实例：</p>
-<p><img src="https://img2020.cnblogs.com/blog/2126720/202102/2126720-20210205160146663-1420159546.png" alt="img"></p>
+<p><img src="/2021/11/16/springcloud03/Snipaste_2021-11-17_20-41-41.png" alt="img"></p>
 <blockquote>
 <p>主启动类中加入@EnableDiscoveryClient 注解</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 启用发现客户端</span></span><br><span class="line"><span class="meta">@EnableDiscoveryClient</span></span><br><span class="line"><span class="comment">// 开启Eureka客户端注解，在服务启动后自动向注册中心注册服务</span></span><br><span class="line"><span class="meta">@EnableEurekaClient</span></span><br><span class="line"><span class="comment">// 启动类</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DeptProvider_8001</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(DeptProvider_8001<span class="class">.<span class="keyword">class</span>, <span class="title">args</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>测试：浏览器访问：<a href="http://localhost:8001/dept/discovery" target="_blank" rel="noopener">http://localhost:8001/dept/discover</a>y</p>
+<p>测试：浏览器访问：<a href="http://localhost:8001/dept/discovery" target="_blank" rel="noopener">http://localhost:8001/dept/discovery</a></p>
 </blockquote>
-<p><img src="https://img2020.cnblogs.com/blog/2126720/202102/2126720-20210205160604340-177991950.png" alt="img"></p>
-<h3 id="7、模拟集群环境搭建"><a href="#7、模拟集群环境搭建" class="headerlink" title="7、模拟集群环境搭建"></a>7、模拟集群环境搭建</h3><p><img src="https://img2020.cnblogs.com/blog/2126720/202102/2126720-20210206094405723-1498448241.png" alt="img"></p>
+<p><img src="/2021/11/16/springcloud03/Snipaste_2021-11-17_20-42-42.png" alt="img"></p>
+<h3 id="7、模拟集群环境搭建"><a href="#7、模拟集群环境搭建" class="headerlink" title="7、模拟集群环境搭建"></a>7、模拟集群环境搭建</h3><p><img src="/2021/11/16/springcloud03/Snipaste_2021-11-17_20-43-17.png" alt="img"></p>
 <blockquote>
 <p>1、修改电脑 C:\Windows\System32\drivers\etc**hosts**文件</p>
 </blockquote>
 <p>模拟不同的服务器：</p>
-<p><img src="https://img2020.cnblogs.com/blog/2126720/202102/2126720-20210205161753571-1619093071.png" alt="img"></p>
+<p><img src="/2021/11/16/springcloud03/Snipaste_2021-11-17_20-43-43.png" alt="img"></p>
 <blockquote>
 <p>2、新建 springcloud-eureka-server-7002、springcloud-eureka-server-7003 模块</p>
 </blockquote>
@@ -330,11 +330,11 @@
 <li>导入跟 server-7001 相同的依赖</li>
 <li>修改 server-7001、server-7002、server-7003yaml 配置</li>
 </ol>
-<p><img src="https://img2020.cnblogs.com/blog/2126720/202102/2126720-20210205161442763-650956762.png" alt="img"></p>
+<p><img src="/2021/11/16/springcloud03/Snipaste_2021-11-17_20-44-21.png" alt="img"></p>
 <blockquote>
 <p>3、在 springcloud-provider-dept-8001 中修改注册中心地址</p>
 </blockquote>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Eureka配置：配置服务注册中心地址</span></span><br><span class="line">eureka:</span><br><span class="line">  client:</span><br><span class="line">    service-url:</span><br><span class="line">      defaultZone: http:<span class="regexp">//</span>eureka7001.com:<span class="number">7001</span><span class="regexp">/eureka/</span>,http:<span class="regexp">//</span>eureka7002.com:<span class="number">7002</span><span class="regexp">/eureka/</span>,http:<span class="regexp">//</span>eureka7003.com:<span class="number">7003</span><span class="regexp">/eureka/</span></span><br><span class="line">  instance:</span><br><span class="line">    instance-id: springcloud-provider-dept-<span class="number">8001</span> <span class="comment">#修改Eureka上的默认描述信息</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Eureka配置：配置服务注册中心地址</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/</span></span><br><span class="line">  <span class="attr">instance:</span></span><br><span class="line">    <span class="attr">instance-id:</span> <span class="string">springcloud-provider-dept-8001</span> <span class="comment">#修改Eureka上的默认描述信息</span></span><br></pre></td></tr></table></figure>
 
 <p>这样模拟集群就搭建好了，就可以把一个项目挂载到三个服务器上了</p>
 <blockquote>
@@ -344,10 +344,10 @@
 <p>就是为了测试：</p>
 <p>项目在上线的时候，服务挂掉了该怎么解决，比如 7001 跟 7002 服务都开启，并且 8001 拥有他们俩的实例。</p>
 <p>然后 7001 服务器挂掉了，这时候我们只需要修改一下端口号即可恢复服务，等 7001 服务修复完毕又可以继续恢复~</p>
-<p><img src="https://img2020.cnblogs.com/blog/2126720/202102/2126720-20210205162813190-1534898548.png" alt="img"></p>
+<p><img src="/2021/11/16/springcloud03/Snipaste_2021-11-17_20-45-28.png" alt="img"></p>
 <p>模拟 7001 服务挂掉：手动关闭 7001</p>
 <p>只需要修改一下端口即可重新恢复服务~</p>
-<p><img src="https://img2020.cnblogs.com/blog/2126720/202102/2126720-20210205162947890-105455687.png" alt="img"></p>
+<p><img src="/2021/11/16/springcloud03/Snipaste_2021-11-17_20-46-02.png" alt="img"></p>
 <h3 id="8、对比和-Eureka-和-Zookeeper-区别"><a href="#8、对比和-Eureka-和-Zookeeper-区别" class="headerlink" title="8、对比和 Eureka 和 Zookeeper 区别"></a>8、对比和 Eureka 和 Zookeeper 区别</h3><blockquote>
 <ol>
 <li>回顾 CAP 原则</li>

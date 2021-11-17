@@ -226,7 +226,7 @@
 <p>应用程序中通过网络或客户端库可能导致网络请求的每个点都是潜在故障的来源。比失败更糟糕的是，这些应用程序还可能导致服务之间的延迟增加，从而备份队列、线程和其他系统资源，从而导致更多跨系统的级联故障。</p>
 <p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRodWIuY29tL05ldGZsaXgvSHlzdHJpeC93aWtpL2ltYWdlcy9zb2EtMy02NDAucG5n?x-oss-process=image/format,png" alt="img"></p>
 <p>当使用 Hystrix 包装每个基础依赖项时，上面的图表中所示的体系结构会发生类似于以下关系图的变化。每个依赖项是相互隔离的，限制在延迟发生时它可以填充的资源中，并包含在回退逻辑中，该逻辑决定在依赖项中发生任何类型的故障时要做出什么样的响应：</p>
-<p><img src="https://img2020.cnblogs.com/blog/2126720/202102/2126720-20210207164100724-1161919234.png" alt="img"></p>
+<p><img src="/2021/11/16/springcloud05/Snipaste_2021-11-17_20-58-37.png" alt="img"></p>
 <p>官网资料：<a href="https://github.com/Netflix/Hystrix/wiki" target="_blank" rel="noopener">https://github.com/Netflix/Hystrix/wiki</a></p>
 <h3 id="4、Hystrix-简单实现"><a href="#4、Hystrix-简单实现" class="headerlink" title="4、Hystrix 简单实现"></a>4、Hystrix 简单实现</h3><blockquote>
 <p>1、新建服务创建模块</p>
@@ -250,7 +250,7 @@
 <p>开启服务创建：springcloud-provider-dept-8001-hystrix</p>
 <p>开启客户端：springcloud-provider-dept-80</p>
 <p>访问:</p>
-<p><img src="https://img2020.cnblogs.com/blog/2126720/202102/2126720-20210207164851280-829374260.png" alt="img"></p>
+<p><img src="/2021/11/16/springcloud05/Snipaste_2021-11-17_21-01-48.png" alt="img"></p>
 <p>而不使用熔断的 springcloud-provider-dept–8001 模块访问相同地址会出现下面状况:</p>
 <p><img src="https://img-blog.csdnimg.cn/20200521132119757.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzU5MTk4MA==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
 <p><strong>因此，为了避免因某个微服务后台出现异常或错误而导致整个应用或网页报错，使用熔断是必要的</strong></p>
