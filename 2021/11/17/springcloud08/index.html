@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Neary Li">
+
+
+
+
+    <meta name="keywords" content="IT">
+
+
+<title>springcloud08 | Neary-Li&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="../../../../favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="../../../../css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="../../../../js/script.js"></script>
+    
+    <script src="../../../../js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Neary&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="../../../../archives">Posts</a>
+                
+                    <a class="menu-item" href="../../../../category">Categories</a>
+                
+                    <a class="menu-item" href="../../../../tag">Tags</a>
+                
+                    <a class="menu-item" href="../../../../about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Neary&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="../../../../archives">Posts</a>
+                
+                    <a class="menu-item" href="../../../../category">Categories</a>
+                
+                    <a class="menu-item" href="../../../../tag">Tags</a>
+                
+                    <a class="menu-item" href="../../../../about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">springcloud08</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Neary Li</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">November 17, 2021&nbsp;&nbsp;21:23:49</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="../../../../categories/SpringCloud/">SpringCloud</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="Spring-Cloud-Config-分布式配置"><a href="#Spring-Cloud-Config-分布式配置" class="headerlink" title="Spring Cloud Config 分布式配置"></a>Spring Cloud Config 分布式配置</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p><strong>分布式系统面临的–配置文件问题</strong></p>
+<p>微服务意味着要将单体应用中的业务拆分成一个个子服务，每个服务的粒度相对较小，因此系统中会出现大量的服务，由于每个服务都需要必要的配置信息才能运行，所以一套集中式的，动态的配置管理设施是必不可少的。spring cloud 提供了 configServer 来解决这个问题，我们每一个微服务自己带着一个 application.yml，那上百个的配置文件修改起来，令人头疼！</p>
+<p><strong>什么是 SpringCloud config 分布式配置中心？</strong></p>
+<p><img src="https://gitee.com/lzh_gitee/springboot_image/raw/master/img/image-20201003110343457.png" alt="image-20201003110343457"></p>
+<p>spring cloud config 为微服务架构中的微服务提供集中化的外部支持，配置服务器为各个不同微服务应用的所有环节提供了一个<strong>中心化的外部配置</strong>。</p>
+<p>spring cloud config 分为<strong>服务端</strong>和<strong>客户端</strong>两部分。</p>
+<p>服务端也称为 <strong>分布式配置中心</strong>，它是一个独立的微服务应用，用来连接配置服务器并为客户端提供获取配置信息，加密，解密信息等访问接口。</p>
+<p>客户端则是<strong>通过指定的配置中心来管理应用资源，以及与业务相关的配置内容，并在启动的时候从配置中心获取和加载配置信息</strong>。配置服务器默认采用 git 来存储配置信息，这样就有助于对环境配置进行版本管理。并且可用通过 git 客户端工具来方便的管理和访问配置内容。</p>
+<p><strong>spring cloud config 分布式配置中心能干嘛？</strong></p>
+<ul>
+<li>集中式管理配置文件</li>
+<li>不同环境，不同配置，动态化的配置更新，分环境部署，比如 /dev /test /prod /beta /release</li>
+<li>运行期间动态调整配置，不再需要在每个服务部署的机器上编写配置文件，服务会向配置中心统一拉取配置自己的信息</li>
+<li>当配置发生变动时，服务不需要重启，即可感知到配置的变化，并应用新的配置</li>
+<li>将配置信息以 REST 接口的形式暴露</li>
+</ul>
+<p><strong>spring cloud config 分布式配置中心与 GitHub 整合</strong></p>
+<p>由于 spring cloud config 默认使用 git 来存储配置文件 (也有其他方式，比如自持 SVN 和本地文件)，但是最推荐的还是 git ，而且使用的是 http / https 访问的形式。</p>
+<h3 id="入门案例"><a href="#入门案例" class="headerlink" title="入门案例"></a>入门案例</h3><h4 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a><strong>服务端</strong></h4><p>编写 application.yml 提交到 github 上或者码云上面（注意：—和空格的输入，否则之后访问补到）</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">profiles:</span></span><br><span class="line">    <span class="attr">active:</span> <span class="string">dev</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">profiles:</span> <span class="string">dev</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">springcloud-config-dev</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">profiles:</span> <span class="string">test</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">springcloud-config-test</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/lzh_gitee/springboot_image/raw/master/img/image-20201003142118117.png" alt="image-20201003142118117"></p>
+<p>新建 springcloud-config-server-3344 模块导入 pom.xml 依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--web--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--config--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-config-server<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2.5.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--eureka--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-eureka<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.4.7.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>resource 下创建 application.yml 配置文件，Spring Cloud Config 服务器从 git 存储库（必须提供）为远程客户端提供配置：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">3344</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">springcloud-config-server</span></span><br><span class="line">  <span class="comment"># 连接github远程仓库</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">config:</span></span><br><span class="line">      <span class="attr">server:</span></span><br><span class="line">        <span class="attr">git:</span></span><br><span class="line">          <span class="comment"># 注意是https的而不是ssh</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">https://github.com/lzh66666/spring-cloud-kuang.git</span></span><br><span class="line">          <span class="comment"># 通过 config-server可以连接到git，访问其中的资源以及配置~</span></span><br><span class="line">          <span class="attr">default-label:</span> <span class="string">main</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 不加这个配置会报Cannot execute request on any known server 这个错：连接Eureka服务端地址不对</span></span><br><span class="line"><span class="comment"># 或者直接注释掉eureka依赖 这里暂时用不到eureka</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">register-with-eureka:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">fetch-registry:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：default-label 属性，默认是 master 提交，我改成 main 提交之后页面死活出不来</p>
+<p><img src="https://gitee.com/lzh_gitee/springboot_image/raw/master/img/image-20201003141429024.png" alt="image-20201003141429024"></p>
+<p>可以输入<code>git status</code>查看自己的分支</p>
+<p><img src="https://gitee.com/lzh_gitee/springboot_image/raw/master/img/image-20201003142733336.png" alt="image-20201003142733336"></p>
+<p>访问：<a href="http://localhost:3344/application-dev.yml" target="_blank" rel="noopener">http://localhost:3344/application-dev.yml</a> 页面</p>
+<p><img src="https://gitee.com/lzh_gitee/springboot_image/raw/master/img/image-20201003141540570.png" alt="image-20201003141540570"></p>
+<p>访问：<a href="http://localhost:3344/application-test.yml" target="_blank" rel="noopener">http://localhost:3344/application-test.yml</a> 页面</p>
+<p><img src="https://gitee.com/lzh_gitee/springboot_image/raw/master/img/image-20201003142203950.png" alt="image-20201003142203950"></p>
+<p><strong>HTTP 服务具有以下格式的资源：</strong>（main 是我的分支，默认为 master）</p>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml">/</span><span class="template-variable">&#123;application&#125;</span><span class="xml">/</span><span class="template-variable">&#123;profile&#125;</span><span class="xml">[/</span><span class="template-variable">&#123;label&#125;</span><span class="xml">]   		//	http://localhost:3344/application/test/main</span></span><br><span class="line"><span class="xml">/</span><span class="template-variable">&#123;application&#125;</span><span class="xml">-</span><span class="template-variable">&#123;profile&#125;</span><span class="xml">.yml				//	http://localhost:3344/application-test.yml</span></span><br><span class="line"><span class="xml">/</span><span class="template-variable">&#123;label&#125;</span><span class="xml">/</span><span class="template-variable">&#123;application&#125;</span><span class="xml">-</span><span class="template-variable">&#123;profile&#125;</span><span class="xml">.yml		//	http://localhost:3344/main/application-test.yml</span></span><br><span class="line"><span class="xml">/</span><span class="template-variable">&#123;application&#125;</span><span class="xml">-</span><span class="template-variable">&#123;profile&#125;</span><span class="xml">.properties</span></span><br><span class="line"><span class="xml">/</span><span class="template-variable">&#123;label&#125;</span><span class="xml">/</span><span class="template-variable">&#123;application&#125;</span><span class="xml">-</span><span class="template-variable">&#123;profile&#125;</span><span class="xml">.properties</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a><strong>客户端</strong></h4><p>将本地 git 仓库 springcloud-config 文件夹下新建的 config-client.yml 提交到 github 或码云仓库：（千万别加注释，否则路径找不到）</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">profiles:</span></span><br><span class="line">    <span class="attr">active:</span> <span class="string">dev</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8201</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">profiles:</span> <span class="string">dev</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">springcloud-provider-dept</span></span><br><span class="line"></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://eureka7001.com:7001/eureka/</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8202</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">profiles:</span> <span class="string">test</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">springcloud-provider-dept</span></span><br><span class="line"></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://eureka7001.com:7001/eureka/</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/lzh_gitee/springboot_image/raw/master/img/image-20201003143926010.png" alt="image-20201003143926010"></p>
+<p>新建一个 springcloud-config-client-3355 模块，并导入依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--web--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--config--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-config<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.1.1.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--actuator--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-actuator<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>resources 下创建 application.yml 和 bootstrap.yml 配置文件</p>
+<ul>
+<li><p>bootstrap.yml 是系统级别的配置</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 系统级别的配置</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">config:</span></span><br><span class="line">      <span class="attr">name:</span> <span class="string">config-client</span> <span class="comment"># 需要从git上读取的资源名称，不要后缀</span></span><br><span class="line">      <span class="attr">profile:</span> <span class="string">dev</span></span><br><span class="line">      <span class="attr">label:</span> <span class="string">main</span></span><br><span class="line">      <span class="attr">uri:</span> <span class="string">http://localhost:3344</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>application.yml 是用户级别的配置</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 用户级别的配置</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">springcloud-config-client</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>创建 controller 包下的 ConfigClientController.java 用于测试</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConfigClientController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;spring.application.name&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> String applicationName; <span class="comment">//获取微服务名称</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;eureka.client.service-url.defaultZone&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> String eurekaServer; <span class="comment">//获取Eureka服务</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;server.port&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> String port; <span class="comment">//获取服务端的端口号</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/config"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getConfig</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"applicationName:"</span>+applicationName +</span><br><span class="line">                <span class="string">"eurekaServer:"</span>+eurekaServer +</span><br><span class="line">                <span class="string">"port:"</span>+port;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>主启动类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConfigClient_3355</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(ConfigClient_3355<span class="class">.<span class="keyword">class</span>,<span class="title">args</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试：</p>
+<p>启动服务端 Config_server_3344 再启动客户端 ConfigClient</p>
+<p>访问：<a href="http://localhost:8201/config/" target="_blank" rel="noopener">http://localhost:8201/config/</a></p>
+<p><img src="https://gitee.com/lzh_gitee/springboot_image/raw/master/img/image-20201003152213118.png" alt="image-20201003152213118"></p>
+<h3 id="小案例"><a href="#小案例" class="headerlink" title="小案例"></a><strong>小案例</strong></h3><p><strong>本地新建 config-dept.yml 和 config-eureka.yml 并提交到码云仓库</strong></p>
+<ul>
+<li><p>config-dept.yml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">profiles:</span></span><br><span class="line">    <span class="attr">active:</span> <span class="string">dev</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8081</span></span><br><span class="line"></span><br><span class="line"><span class="attr">mybatis:</span></span><br><span class="line">  <span class="attr">type-aliases-package:</span> <span class="string">nuc.ss.springcloud.pojo</span></span><br><span class="line">  <span class="attr">config-location:</span> <span class="string">classpath:mybatis/mybatis-config.xml</span></span><br><span class="line">  <span class="attr">mapper-locations:</span> <span class="string">classpath:mybatis/mapper/*.xml</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">profiles:</span> <span class="string">dev</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">springcloud-config-dept</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">type:</span> <span class="string">com.alibaba.druid.pool.DruidDataSource</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">org.gjt.mm.mysql.Driver</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://localhost:3306/db01?characterEncoding=utf-8&amp;useUnicode=true</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">admin</span></span><br><span class="line"></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/</span></span><br><span class="line">  <span class="attr">instance:</span></span><br><span class="line">    <span class="attr">instance-id:</span> <span class="string">springcloud-provider-dept-8081</span></span><br><span class="line"></span><br><span class="line"><span class="attr">info:</span></span><br><span class="line">  <span class="attr">app.name:</span> <span class="string">lzh-springcloud</span></span><br><span class="line">  <span class="attr">company.name:</span> <span class="string">com.lzh</span></span><br><span class="line"></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8081</span></span><br><span class="line"></span><br><span class="line"><span class="attr">mybatis:</span></span><br><span class="line">  <span class="attr">type-aliases-package:</span> <span class="string">nuc.ss.springcloud.pojo</span></span><br><span class="line">  <span class="attr">config-location:</span> <span class="string">classpath:mybatis/mybatis-config.xml</span></span><br><span class="line">  <span class="attr">mapper-locations:</span> <span class="string">classpath:mybatis/mapper/*.xml</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">profiles:</span> <span class="string">test</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">springcloud-config-dept</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">type:</span> <span class="string">com.alibaba.druid.pool.DruidDataSource</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">org.gjt.mm.mysql.Driver</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://localhost:3306/db02?characterEncoding=utf-8&amp;useUnicode=true</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">admin</span></span><br><span class="line"></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/</span></span><br><span class="line">  <span class="attr">instance:</span></span><br><span class="line">    <span class="attr">instance-id:</span> <span class="string">springcloud-provider-dept-8081</span></span><br><span class="line"></span><br><span class="line"><span class="attr">info:</span></span><br><span class="line">  <span class="attr">app.name:</span> <span class="string">lzh-springcloud</span></span><br><span class="line">  <span class="attr">company.name:</span> <span class="string">com.lzh</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>config-eureka.yml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">profiles:</span></span><br><span class="line">    <span class="attr">active:</span> <span class="string">dev</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">7001</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">profiles:</span> <span class="string">dev</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">springcloud-config-eureka</span></span><br><span class="line"></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">instance:</span></span><br><span class="line">    <span class="attr">hostname:</span> <span class="string">eureka7001.com</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">register-with-eureka:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">fetch-registry:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">7001</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">profiles:</span> <span class="string">test</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">springcloud-config-eureka</span></span><br><span class="line"></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">instance:</span></span><br><span class="line">    <span class="attr">hostname:</span> <span class="string">eureka7001.com</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">register-with-eureka:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">fetch-registry:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>上传成功 <img src="https://gitee.com/lzh_gitee/springboot_image/raw/master/img/image-20201003191627269.png" alt="image-20201003191627269"></p>
+</li>
+</ul>
+<p><strong>新建 springcloud-config-eureka-7001 模块，并将原来的 springcloud-eureka-7001 模块下的内容拷贝的该模块。</strong></p>
+<ul>
+<li><p>清空该模块的 application.yml 配置</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">springcloud-config-eureka-7001</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>并新建 bootstrap.yml 连接远程配置</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">config:</span></span><br><span class="line">      <span class="attr">name:</span> <span class="string">config-eureka</span> <span class="comment"># 仓库中的配置文件名称</span></span><br><span class="line">      <span class="attr">label:</span> <span class="string">main</span></span><br><span class="line">      <span class="attr">profile:</span> <span class="string">dev</span></span><br><span class="line">      <span class="attr">uri:</span> <span class="string">http://localhost:3344</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><strong>在 pom.xml 中添加 spring cloud config 依赖</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-config<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.1.1.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>主启动类</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableEurekaServer</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EurekaServer_7001</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(EurekaServer_7001<span class="class">.<span class="keyword">class</span>,<span class="title">args</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>测试</strong></p>
+<ul>
+<li>启动 Config_Server_3344，并访问 <a href="http://localhost:3344/master/config-eureka-dev.yml" target="_blank" rel="noopener">http://localhost:3344/master/config-eureka-dev.yml</a> 测试 <img src="https://gitee.com/lzh_gitee/springboot_image/raw/master/img/image-20201003202046005.png" alt="image-20201003202046005"></li>
+<li>启动 ConfigEurekaServer_7001，访问 <a href="http://localhost:7001/" target="_blank" rel="noopener">http://localhost:7001/</a> 测试 <img src="https://gitee.com/lzh_gitee/springboot_image/raw/master/img/image-20201003202114235.png" alt="img"></li>
+<li>显示上图则成功</li>
+</ul>
+<p>新建 springcloud-config-dept-8081 模块并拷贝 springcloud-provider-dept-8081 的内容</p>
+<p>同理导入 spring cloud config 依赖、清空 application.yml 、新建 bootstrap.yml 配置文件并配置</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">config:</span></span><br><span class="line">      <span class="attr">name:</span> <span class="string">config-dept</span></span><br><span class="line">      <span class="attr">label:</span> <span class="string">main</span></span><br><span class="line">      <span class="attr">profile:</span> <span class="string">dev</span></span><br><span class="line">      <span class="attr">uri:</span> <span class="string">http://localhost:3344</span></span><br></pre></td></tr></table></figure>
+
+<p>主启动类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//启动类</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableEurekaClient</span> <span class="comment">//在服务启动后自动注册到Eureka中</span></span><br><span class="line"><span class="meta">@EnableDiscoveryClient</span> <span class="comment">//服务发现~</span></span><br><span class="line"><span class="meta">@EnableCircuitBreaker</span><span class="comment">//添加对熔断的支持</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DeptProvider_8081</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(DeptProvider_8081<span class="class">.<span class="keyword">class</span>,<span class="title">args</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//增加一个 Servlet</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ServletRegistrationBean <span class="title">hystrixMetricsStreamServlet</span><span class="params">()</span></span>&#123;</span><br><span class="line">        ServletRegistrationBean registrationBean = <span class="keyword">new</span> ServletRegistrationBean(<span class="keyword">new</span> HystrixMetricsStreamServlet());</span><br><span class="line">        <span class="comment">//访问该页面就是监控页面</span></span><br><span class="line">        registrationBean.addUrlMappings(<span class="string">"/actuator/hystrix.stream"</span>);</span><br><span class="line">        <span class="keyword">return</span> registrationBean;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>只需更改 github 远程即可实现部署</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Neary Li</span>
+                    </p>
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="../../../../tags/java/"># java</a>
+                    
+                        <a href="../../../../tags/SpringCloud/"># SpringCloud</a>
+                    
+                        <a href="../../../../tags/config/"># config</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="../springcloud07/">springcloud07</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+
+
+    <div class="copyright">
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>    <span id="busuanzi_container_site_pv">
+                    总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+            <span id="busuanzi_container_site_uv">
+                    总访客数<span id="busuanzi_value_site_uv"></span>人
+            </span> 
+            <br>
+        <span>copyright &copy 2021 Neary Li. All rights reserved.</span>
+    </div>
+    
+</footer>
+
+    </div>
+</body>
+</html>
