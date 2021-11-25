@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Neary Li">
+
+
+
+
+    <meta name="keywords" content="IT">
+
+
+<title>HTTP状态码 | Neary-Li&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="../../../../favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="../../../../css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="../../../../js/script.js"></script>
+    
+    <script src="../../../../js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Neary&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="../../../../archives">Posts</a>
+                
+                    <a class="menu-item" href="../../../../category">Categories</a>
+                
+                    <a class="menu-item" href="../../../../tag">Tags</a>
+                
+                    <a class="menu-item" href="../../../../about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Neary&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="../../../../archives">Posts</a>
+                
+                    <a class="menu-item" href="../../../../category">Categories</a>
+                
+                    <a class="menu-item" href="../../../../tag">Tags</a>
+                
+                    <a class="menu-item" href="../../../../about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">HTTP状态码</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Neary Li</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">November 25, 2021&nbsp;&nbsp;22:11:51</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="../../../../categories/HTTP/">HTTP</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="HTTP-状态码-错误分析"><a href="#HTTP-状态码-错误分析" class="headerlink" title="HTTP 状态码 错误分析"></a>HTTP 状态码 错误分析</h1><h2 id="HTTP-状态码五大类："><a href="#HTTP-状态码五大类：" class="headerlink" title="HTTP 状态码五大类："></a>HTTP 状态码五大类：</h2><table>
+<thead>
+<tr>
+<th align="center">状态码</th>
+<th align="center">响应类别</th>
+<th align="center">出现原因</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1XX</td>
+<td align="center">信息性状态码（Informational）</td>
+<td align="center">服务器正在处理请求</td>
+</tr>
+<tr>
+<td align="center">2XX</td>
+<td align="center">成功状态码（Success）</td>
+<td align="center">请求已正常处理完毕</td>
+</tr>
+<tr>
+<td align="center">3XX</td>
+<td align="center">重定向状态码（Redirection）</td>
+<td align="center">需要进行额外操作以完成请求</td>
+</tr>
+<tr>
+<td align="center">4XX</td>
+<td align="center">客户端错误状态码（Client Error）</td>
+<td align="center">客户端原因导致服务器无法处理请求</td>
+</tr>
+<tr>
+<td align="center">5XX</td>
+<td align="center">服务器错误状态码（Server Error）</td>
+<td align="center">服务器原因导致处理请求出错</td>
+</tr>
+</tbody></table>
+<h2 id="详细信息："><a href="#详细信息：" class="headerlink" title="详细信息："></a>详细信息：</h2><h3 id="200"><a href="#200" class="headerlink" title="200"></a>200</h3><p>请求已成功。</p>
+<p><strong>201 Created</strong></p>
+<p>请求已完成，并导致创建新资源。</p>
+<p><strong>202 Accepted</strong></p>
+<p>该请求已被接受处理，但处理尚未完成。</p>
+<p><strong>204 No Content*</strong></p>
+<p>表示请求已成功处理，但是没有内容返回（就应该没有内容返回的状况）</p>
+<p><strong>206 Reset Content</strong></p>
+<p>表示服务器已经完成了部分 GET 请求（客户端进行了范围请求）<br>响应报文中包含 Content-Range 指定范围的实体内容</p>
+<h3 id="300"><a href="#300" class="headerlink" title="300"></a>300</h3><p><strong>301 永久性转移</strong></p>
+<p>浏览器在拿到服务器返回的这个状态码后会自动跳转到一个新的 URL 地址，这个地址可以从响应的 Location 首部中获取（用户看到的效果就是他输入的地址 A 瞬间变成了另一个地址 B），旧地址 A 的资源已经被永久地移除了（这个资源不可访问了），搜索引擎在抓取新内容的同时也将旧的网址交换为重定向之后的网址</p>
+<p><strong>302 短暂性转移</strong></p>
+<p>临时重定向，表示请求的资源临时搬到了其他位置<br>表示旧地址 A 的资源还在（仍然可以访问），这个重定向只是临时地从旧地址 A 跳转到地址 B，搜索引擎会抓取新的内容而保存旧的网址。</p>
+<p><strong>303 See Other</strong></p>
+<p>表示请求资源存在另一个 URI，应使用 GET 定向获取请求资源<br>303 功能与 302 一样，区别只是 303 明确客户端应该使用 GET 访问<br>303 表示请求的资源路径发生改变，使用 GET 方法请求新 url。她与 302 的功能一样，但是明确指出使用 GET 方法请求新 url（第一次请求返回的 location）。</p>
+<h3 id="400"><a href="#400" class="headerlink" title="400"></a>400</h3><p><strong>Bad Request</strong></p>
+<p>表示请求报文存在语法错误或参数错误，服务器不理解，服务器不应该重复提交这个请求，需要修改请求内容后再次发送。<br>原因以及解决思路：</p>
+<blockquote>
+<ol>
+<li>前端提交数据的字段名称或者是字段类型和后台的实体类不一致，导致无法封装；最常见的可能就是后端使用@RequestBody 接收，先仔细排查一遍，不行的话，使用@RequestParam 再逐一看一下是否可以封装进去</li>
+<li>前端提交的到后台的数据应该是 json 字符串类型，而前端没有将对象转化为字符串类型；这个比较简单，使用 JSON.stringify(param) 转换成 json 字符串</li>
+</ol>
+</blockquote>
+<p><strong>401 Unauthorized</strong></p>
+<p>表示发送的请求需要有 HTTP 认证信息或者是认证失败了<br>返回 401 的响应必须包含一个适用于被请求资源的 WWW-Authenticate 首部以质询用户信息<br>浏览器初次接受 401 时，会弹出认证窗口</p>
+<p><strong>403 Forbidden</strong></p>
+<p>返回 403 状态码就是，拒绝或者禁止访问。但是，服务器虽然拒绝或者禁止访问，但是它已经理解了你的请求。</p>
+<p>具体原因有以下多种：</p>
+<ul>
+<li>错误代码：403.1<ul>
+<li>HTTP 403.1 禁止访问：禁止可执行访问 Internet 信息服务 原因是执行权限不够，解决方法： 打开“管理工具”的“Internet 信息服务”，右键选择“WEB 站点属性”的“主目录”选项卡，把“执行许可”的选项从“无”改为“纯脚本”即可。</li>
+</ul>
+</li>
+<li>错误代码：403.2<ul>
+<li>403.2 是由于”读取”访问被禁止而造成的。导致此错误是由于没有可用的默认网页且没有对目录启用目录浏览，或者要显示的 HTML 网页所驻留的目录仅标记为”可执行”或”脚本”权限。</li>
+</ul>
+</li>
+<li>错误代码：403.3<ul>
+<li>403.3 是由于”写入”访问被禁止而造成的，当试图将文件上载到目录或在目录中修改文件，但该目录不允许”写”访问时就会出现此种错误。</li>
+</ul>
+</li>
+<li>错误代码：403.4<ul>
+<li>403.4 是由于要求 SSL 而造成的，您必须在要查看的网页的地址中使用”https”。</li>
+</ul>
+</li>
+<li>错误代码：403.5<ul>
+<li>403.5 是由于要求使用 128 位加密算法的 Web 浏览器而造成的，如果您的浏览器不支持 128 位加密算法就会出现这个错误，可以连接微软网站进行浏览器升级。</li>
+</ul>
+</li>
+<li>错误代码：403.6<ul>
+<li>403.6 是由于 IP 地址被拒绝而造成的。如果服务器中有不能访问该站点的 IP 地址列表，并且您使用的 IP 地址在该列表中时您就会返回这条错误信息。</li>
+</ul>
+</li>
+<li>错误代码：403.7<ul>
+<li>403.7 是因为要求客户证书，当需要访问的资源要求浏览器拥有服务器能够识别的安全套接字层 (SSL) 客户证书时会返回此种错误。</li>
+</ul>
+</li>
+</ul>
+<p><strong>404 Not Found</strong></p>
+<p>表示服务器找不到你请求的资源。</p>
+<p><strong>405 Method Not Allowed</strong></p>
+<p>请求行中指定的方法不允许由 Request-URI 标识的资源。响应必须包含一个 Allow 标头，其中包含所请求资源的有效方法列表。</p>
+<p><strong>410 Gone</strong></p>
+<p>所请求的资源已从这个地址转移，不再可用。</p>
+<p><strong>413 Request Entity Too Large</strong></p>
+<p>服务器拒绝处理请求，因为请求实体大于服务器愿意或能够处理的请求实体。服务器可以关闭连接以防止客户端继续请求。<br>如果条件是临时的，服务器应该包括一个 Retry-After 头字段，以指示它是临时的，并且在客户端可以再次尝试之后。</p>
+<p><strong>414 Request-URI Too Long</strong></p>
+<p>服务器拒绝为请求提供服务，因为 Request-URI 比服务器愿意解释的长。这种罕见的情况是只可能当客户端已经不正确地将 POST 请求转换到具有长查询信息的 GET 请求中，当客户端已陷入 URI 重定向“黑洞”发生（例如，一个重定向的 URI 指向前缀它本身的后缀，或者当服务器受到试图利用固定长度缓冲区来读取或操作 Request-URI 的某些服务器中存在的安全漏洞的客户端的攻击时。</p>
+<p><strong>415 Unsupported Media Type</strong></p>
+<p>服务器拒绝为请求提供服务，因为请求的实体采用所请求方法的请求资源不支持的格式。</p>
+<p><strong>422 Unprocessable Entity</strong></p>
+<p>客户端上传的附件无法处理，导致请求失败。</p>
+<p><strong>429 Too Many Requests</strong></p>
+<p>客户端的请求次数超过限额。</p>
+<h3 id="500"><a href="#500" class="headerlink" title="500"></a>500</h3><p><strong>Internal Server Error</strong></p>
+<p>表示服务器执行请求的时候出错了，可能是服务器端的 bug,但是也可能是前端的问题，比如后台报了序列化错误，可能就是因为你的前端没有设置 content-type=application/json</p>
+<p><strong>502 Bad Gateway</strong></p>
+<p>服务器在充当网关或代理时，在尝试完成请求时从其访问的上游服务器收到无效响应。</p>
+<p><strong>503 Bad Gateway</strong></p>
+<p>由于服务器的临时过载或维护，服务器当前无法处理请求。这意味着这是一个暂时的条件，经过一段时间的延迟后会得到缓解。如果已知，延迟的长度可以在 Retry-After 报头中指示。如果没有给出 Retry-After，客户端应该像处理 500 响应一样处理响应。</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Neary Li</span>
+                    </p>
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="../../../../tags/HTTP/"># HTTP</a>
+                    
+                        <a href="../../../../tags/%E7%8A%B6%E6%80%81%E7%A0%81/"># 状态码</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="../../22/mybatis-plus/">mybatis-plus</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+
+
+    <div class="copyright">
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>    <span id="busuanzi_container_site_pv">
+                    总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+            <span id="busuanzi_container_site_uv">
+                    总访客数<span id="busuanzi_value_site_uv"></span>人
+            </span> 
+            <br>
+        <span>copyright &copy 2021 Neary Li. All rights reserved.</span>
+    </div>
+    
+</footer>
+
+    </div>
+</body>
+</html>
