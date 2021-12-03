@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Neary Li">
+
+
+
+
+    <meta name="keywords" content="IT">
+
+
+<title>Redis安装 | Neary-Li&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="../../../../favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="../../../../css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="../../../../js/script.js"></script>
+    
+    <script src="../../../../js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Neary&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="../../../../archives">Posts</a>
+                
+                    <a class="menu-item" href="../../../../category">Categories</a>
+                
+                    <a class="menu-item" href="../../../../tag">Tags</a>
+                
+                    <a class="menu-item" href="../../../../about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Neary&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="../../../../archives">Posts</a>
+                
+                    <a class="menu-item" href="../../../../category">Categories</a>
+                
+                    <a class="menu-item" href="../../../../tag">Tags</a>
+                
+                    <a class="menu-item" href="../../../../about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Redis安装</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Neary Li</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">December 2, 2021&nbsp;&nbsp;21:42:12</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="../../../../categories/Redis/">Redis</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="Redis-安装"><a href="#Redis-安装" class="headerlink" title="Redis 安装"></a>Redis 安装</h1><p>1、下载程序包：<a href="https://redis.io/" target="_blank" rel="noopener">https://redis.io/</a></p>
+<p>2、利用 xftp 上传至阿里云服务<code>home/admin</code> 目录下</p>
+<p>3、命令：<code>mv redis-6.2.6.tar.gz /opt</code></p>
+<p>一般会移动到 opt 目录下</p>
+<p>4、进入 opt 目录下 <code>cd /opt</code></p>
+<p>5、解压缩: <code>tar -zxvf redis.xxx.tar.gz</code></p>
+<p><img src="/2021/12/02/Redis%E5%AE%89%E8%A3%85/image-20211201202110817.png" alt="image-20211201202110817"></p>
+<p>6、进入 redis 解压后的文件 查看配置文件</p>
+<p><img src="/2021/12/02/Redis%E5%AE%89%E8%A3%85/image-20211201202320617.png" alt="image-20211201202320617"></p>
+<p>7、基本的环境安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yun isntall gcc-c++</span><br><span class="line"></span><br><span class="line">gcc -v <span class="comment"># 确认是否安装完成</span></span><br><span class="line"></span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">make install <span class="comment"># 确认是否安装完成</span></span><br></pre></td></tr></table></figure>
+
+<p>使用<code>gcc -v</code>查看是否安装成功</p>
+<p><img src="/2021/12/02/Redis%E5%AE%89%E8%A3%85/image-20211201202529360.png" alt="image-20211201202529360"></p>
+<p>执行<code>make</code>命令:该命令会将所有的环境配置上。</p>
+<p><img src="/2021/12/02/Redis%E5%AE%89%E8%A3%85/image-20211201203024344.png" alt="image-20211201203024344"></p>
+<p>8、redis 的默认安装位置 <code>/usr/loacal/bin</code></p>
+<p><img src="/2021/12/02/Redis%E5%AE%89%E8%A3%85/image-20211201203310637.png" alt="image-20211201203310637"></p>
+<p>备注：一般我们自己的程序会默认安装至该位置</p>
+<p>9、将 reids 配置文件拷贝到当前目录下</p>
+<p>以后就使用 myconfig 下的 redis 配置文件，可以保证安全</p>
+<p><img src="/2021/12/02/Redis%E5%AE%89%E8%A3%85/image-20211201203632935.png" alt="image-20211201203632935"></p>
+<p>10、redis 默认不是后台启动的，需要修改配置文件！</p>
+<p><img src="/2021/12/02/Redis%E5%AE%89%E8%A3%85/image-20211201204023929.png" alt="image-20211201204023929"></p>
+<p>11、启动 Redis 服务！</p>
+<p><img src="/2021/12/02/Redis%E5%AE%89%E8%A3%85/image-20211201204429314.png" alt="image-20211201204429314"></p>
+<p>12、使用 redis-cli 进行连接测试！</p>
+<p><img src="/2021/12/02/Redis%E5%AE%89%E8%A3%85/image-20211201204814817.png" alt="image-20211201204814817"></p>
+<p>13、查看 redis 进程是否开启<code>ps -ef|grep redis</code></p>
+<p><img src="/2021/12/02/Redis%E5%AE%89%E8%A3%85/image-20211201205031008.png" alt="image-20211201205031008"></p>
+<p>14、关闭 redis 服务<code>shutdown</code></p>
+<p><img src="/2021/12/02/Redis%E5%AE%89%E8%A3%85/image-20211201205143175.png" alt="image-20211201205143175"></p>
+<p>再次查看进程状态</p>
+<p><img src="/2021/12/02/Redis%E5%AE%89%E8%A3%85/image-20211201205158961.png" alt="image-20211201205158961"></p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Neary Li</span>
+                    </p>
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="../../../../tags/Redis/"># Redis</a>
+                    
+                        <a href="../../../../tags/%E5%AE%89%E8%A3%85/"># 安装</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="../%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95-Redis/">性能测试(Redis)</a>
+            
+            
+            <a class="next" rel="next" href="../../../11/25/HTTP%E7%8A%B6%E6%80%81%E7%A0%81/">HTTP状态码</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+
+
+    <div class="copyright">
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>    <span id="busuanzi_container_site_pv">
+                    总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+            <span id="busuanzi_container_site_uv">
+                    总访客数<span id="busuanzi_value_site_uv"></span>人
+            </span> 
+            <br>
+        <span>copyright &copy 2021 Neary Li. All rights reserved.</span>
+    </div>
+    
+</footer>
+
+    </div>
+</body>
+</html>
